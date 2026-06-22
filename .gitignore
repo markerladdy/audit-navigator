@@ -1,0 +1,5 @@
+.cf_token
+.env
+*.log
+.DS_Store
+Thumbs.db
