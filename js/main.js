@@ -63,7 +63,7 @@ function initSearch() {
             ? `article.html?slug=${item.slug}&type=article`
             : item.type === 'case'
               ? `article.html?slug=${item.slug}&type=case`
-              : `/news.html#news-${item.id}`;
+              : `article.html?id=${item.id}&type=news`;
           html += `<a href="${link}" class="search-item" onclick="closeSearch()">
             <span class="search-tag tag-${item.type}">${typeLabel(item.type)}</span>
             <span class="search-title">${item.title}</span>
@@ -156,7 +156,7 @@ function initHome() {
     .then(data => {
       if (!data.items || !data.items.length) return;
       newsContainer.innerHTML = data.items.map(item => `
-        <a href="/news.html#news-${item.id}" class="news-mini-card">
+        <a href="article.html?id=${item.id}&type=news" class="news-mini-card">
           <span class="news-meta">${item.category || '资讯'}</span>
           <span class="news-title">${item.title}</span>
           <span class="news-date">${formatDate(item.published_at)}</span>
@@ -185,7 +185,7 @@ function initNews() {
         return;
       }
       container.innerHTML = data.items.map(item => `
-        <article class="news-card" id="news-${item.id}">
+        <a href="article.html?id=${item.id}&type=news" class="news-card" id="news-${item.id}" style="display:block;text-decoration:none;color:inherit;">
           <div class="news-card-header">
             <span class="news-badge">${item.category || '资讯'}</span>
             <span class="news-source">${item.source || ''}</span>
@@ -193,7 +193,7 @@ function initNews() {
           </div>
           <h3>${item.title}</h3>
           <p>${item.summary || ''}</p>
-        </article>
+        </a>
       `).join('');
     })
     .catch(() => {
@@ -259,17 +259,26 @@ function initCases() {
 function initArticleDetail() {
   const params = new URLSearchParams(window.location.search);
   const slug = params.get('slug');
+  const id = params.get('id');
   const type = params.get('type') || 'article';
 
-  if (!slug) {
+  if (!slug && !id) {
     document.getElementById('article-title').textContent = '页面不存在';
-    document.getElementById('article-content').innerHTML = '<p>请从文章列表选择内容</p>';
+    document.getElementById('article-content').innerHTML = '<p>请从列表选择内容</p>';
     return;
   }
 
-  const apiUrl = type === 'case' ? `${API_BASE}/cases/${slug}` : `${API_BASE}/articles/${slug}`;
-  const backUrl = type === 'case' ? 'cases.html' :
-    window.location.search.includes('section=hospital') ? 'hospital.html' : 'education.html';
+  let apiUrl, backUrl;
+  if (type === 'case') {
+    apiUrl = `${API_BASE}/cases/${slug}`;
+    backUrl = 'cases.html';
+  } else if (type === 'news') {
+    apiUrl = `${API_BASE}/news/${id}`;
+    backUrl = 'news.html';
+  } else {
+    apiUrl = `${API_BASE}/articles/${slug}`;
+    backUrl = window.location.search.includes('section=hospital') ? 'hospital.html' : 'education.html';
+  }
 
   fetch(apiUrl)
     .then(r => {
@@ -284,6 +293,9 @@ function initArticleDetail() {
       let metaHtml = '';
       if (type === 'case') {
         metaHtml = `<span class="article-meta-tag">📋 实例讲解</span>`;
+      } else if (type === 'news') {
+        metaHtml = `<span class="article-meta-tag tag-news-badge">📰 行业资讯</span>`;
+        if (item.source) metaHtml += `<span class="article-meta-tag">${item.source}</span>`;
       } else if (item.section === 'hospital') {
         metaHtml = `<span class="article-meta-tag tag-hospital">🏥 医院专区</span>`;
       } else {
@@ -294,16 +306,10 @@ function initArticleDetail() {
       metaHtml += `<span class="article-meta-date">${formatDate(item.published_at)}</span>`;
       meta.innerHTML = metaHtml;
 
-      // Render content (already HTML from API)
       const contentDiv = document.getElementById('article-content');
-      if (type === 'case') {
-        contentDiv.innerHTML = `<article class="article-body">${item.content}</article>`;
-      } else {
-        contentDiv.innerHTML = `<article class="article-body">${item.content}</article>`;
-      }
+      contentDiv.innerHTML = `<article class="article-body">${item.content || item.summary || ''}</article>`;
 
-      // Add back link
-      contentDiv.innerHTML += `<div class="article-back"><a href="${backUrl}" class="btn btn-outline">← 返回${type === 'case' ? '案例列表' : '专区'}</a></div>`;
+      contentDiv.innerHTML += `<div class="article-back"><a href="${backUrl}" class="btn btn-outline">← 返回列表</a></div>`;
     })
     .catch(() => {
       document.getElementById('article-title').textContent = '内容未找到';

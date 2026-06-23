@@ -520,6 +520,7 @@ footer {
 }
 .article-meta-tag.tag-hospital { background: var(--hospital-bg); color: var(--hospital); }
 .article-meta-tag.tag-edu { background: var(--edu-bg); color: var(--edu-green); }
+.article-meta-tag.tag-news-badge { background: #fce7f3; color: #be185d; }
 .article-meta-author { color: var(--text-light); font-size: 13px; }
 .article-meta-date { color: var(--text-muted); font-size: 13px; }
 
