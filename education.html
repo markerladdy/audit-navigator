@@ -7,7 +7,7 @@
   <meta name="description" content="高等学校与中小学会计核算实务、财务管理实务与用友软件应用深度解析。">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body data-page="education">
 
 <header>
   <nav>
@@ -25,8 +25,19 @@
       <a href="tools.html">🔧 工具下载</a>
       <a href="about.html">关于</a>
     </div>
+      <button class="search-toggle" id="search-btn" aria-label="搜索">🔍</button>
   </nav>
 </header>
+
+<!-- 搜索面板 -->
+<div class="search-overlay" id="search-overlay"></div>
+<div class="search-panel" id="search-panel">
+  <div class="search-panel-header">
+    <input type="text" id="search-input" placeholder="搜索文章、资讯、案例… (Ctrl+K)" autocomplete="off">
+    <button onclick="closeSearch()" class="search-close">✕</button>
+  </div>
+  <div class="search-results" id="search-results"></div>
+</div>
 
 <div class="page-header">
   <h1>🏫 院校专区</h1>
@@ -54,38 +65,7 @@
       <h2>🎓 高校会计核算与财务管理</h2>
       <p>高等学校会计核算实务、科研经费管理、预算绩效与成本核算</p>
     </div>
-    <div class="card-grid">
-      <div class="card card-edu">
-        <div class="card-icon green">📘</div>
-        <h3>高校会计核算</h3>
-        <p>高等学校会计科目体系、教育成本核算、科研经费核算、专项经费管理、基建并账与报表编制。</p>
-      </div>
-      <div class="card card-edu">
-        <div class="card-icon green">📊</div>
-        <h3>预算管理与绩效</h3>
-        <p>部门预算编制、校内预算分配、预算执行监控、预算绩效评价、结转结余资金管理。</p>
-      </div>
-      <div class="card card-edu" onclick="location.href='e/research-funds.html'" style="cursor:pointer;">
-        <div class="card-icon green">🔬</div>
-        <h3><a href="e/research-funds.html" style="color:inherit;text-decoration:none;">科研经费管理</a></h3>
-        <p>纵向/横向科研经费入账、经费使用审核、结题审计配合、间接费用分摊与绩效发放。</p>
-      </div>
-      <div class="card card-edu">
-        <div class="card-icon green">🏗️</div>
-        <h3>固定资产与无形资产</h3>
-        <p>教学科研设备、房屋建筑、图书资料的入账与折旧管理，专利等无形资产的核算实务。</p>
-      </div>
-      <div class="card card-edu">
-        <div class="card-icon green">💰</div>
-        <h3>收费与资金管理</h3>
-        <p>学费住宿费收费标准管理、收费系统与财务系统对接、银行账户管理与资金调度。</p>
-      </div>
-      <div class="card card-edu">
-        <div class="card-icon green">🛡️</div>
-        <h3>高校内控与审计</h3>
-        <p>高校内部控制体系建设、科研经费专项审计、经济责任审计配合、财务风险防范。</p>
-      </div>
-    </div>
+    <div class="article-grid"></div>
   </div>
 </section>
 

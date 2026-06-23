@@ -7,7 +7,7 @@
   <meta name="description" content="公立医院会计核算实务、财务管理实务与用友HRP软件应用深度解析。">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body data-page="hospital">
 
 <header>
   <nav>
@@ -25,8 +25,19 @@
       <a href="tools.html">🔧 工具下载</a>
       <a href="about.html">关于</a>
     </div>
+      <button class="search-toggle" id="search-btn" aria-label="搜索">🔍</button>
   </nav>
 </header>
+
+<!-- 搜索面板 -->
+<div class="search-overlay" id="search-overlay"></div>
+<div class="search-panel" id="search-panel">
+  <div class="search-panel-header">
+    <input type="text" id="search-input" placeholder="搜索文章、资讯、案例… (Ctrl+K)" autocomplete="off">
+    <button onclick="closeSearch()" class="search-close">✕</button>
+  </div>
+  <div class="search-results" id="search-results"></div>
+</div>
 
 <div class="page-header">
   <h1>🏥 医院专区</h1>
@@ -53,38 +64,7 @@
       <h2>📊 会计核算实务</h2>
       <p>公立医院会计制度实操指南，从科目设置到报表编制全流程</p>
     </div>
-    <div class="card-grid">
-      <div class="card card-hospital" onclick="location.href='h/accounting-setup.html'" style="cursor:pointer;">
-        <div class="card-icon blue">📘</div>
-        <h3><a href="h/accounting-setup.html" style="color:inherit;text-decoration:none;">医院会计科目设置与账套搭建</a></h3>
-        <p>按照医院会计制度要求，详解一级科目、明细科目设置规则，以及用友HRP中账套初始化操作流程。</p>
-      </div>
-      <div class="card card-hospital" onclick="location.href='h/revenue-cost.html'" style="cursor:pointer;">
-        <div class="card-icon blue">💰</div>
-        <h3><a href="h/revenue-cost.html" style="color:inherit;text-decoration:none;">医疗收入与费用核算</a></h3>
-        <p>门诊收入、住院收入的确认与核算方法；医疗业务成本、管理费用的归集与分摊实务。</p>
-      </div>
-      <div class="card card-hospital" onclick="location.href='#'" style="cursor:pointer;">
-        <div class="card-icon blue">🏗️</div>
-        <h3><a href="#" style="color:inherit;text-decoration:none;">固定资产与设备核算</a></h3>
-        <p>医疗设备、房屋建筑等固定资产的入账、折旧计提、处置管理，以及与用友资产模块的衔接。</p>
-      </div>
-      <div class="card card-hospital" onclick="location.href='#'" style="cursor:pointer;">
-        <div class="card-icon blue">📄</div>
-        <h3><a href="#" style="color:inherit;text-decoration:none;">医院财务报表编制</a></h3>
-        <p>收入费用总表、净资产变动表、现金流量表的编制要点，报表附注披露规范，用友报表模块操作。</p>
-      </div>
-      <div class="card card-hospital" onclick="location.href='#'" style="cursor:pointer;">
-        <div class="card-icon blue">🔄</div>
-        <h3><a href="#" style="color:inherit;text-decoration:none;">月末与年末结转</a></h3>
-        <p>医疗收入结转、成本结转、结余分配的账务处理流程，年终决算的准备工作与操作要点。</p>
-      </div>
-      <div class="card card-hospital" onclick="location.href='#'" style="cursor:pointer;">
-        <div class="card-icon blue">⚕️</div>
-        <h3><a href="#" style="color:inherit;text-decoration:none;">专项资金与科研经费核算</a></h3>
-        <p>财政专项补助、科研课题经费的专项核算与管理，基金预算编制与执行。</p>
-      </div>
-    </div>
+    <div class="article-grid"></div>
   </div>
 </section>
 

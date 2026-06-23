@@ -1,4 +1,14 @@
+/* 医教财通 — main.js (全栈版) */
+const API_BASE = '/api';
+
 document.addEventListener('DOMContentLoaded', () => {
+  initNav();
+  initSearch();
+  initPage();
+});
+
+/* ===== 导航 ===== */
+function initNav() {
   const header = document.querySelector('header');
   const hamburger = document.querySelector('.hamburger');
   const navLinks = document.querySelector('.nav-links');
@@ -25,4 +35,228 @@ document.addEventListener('DOMContentLoaded', () => {
       link.classList.add('active');
     }
   });
-});
+}
+
+/* ===== 搜索 ===== */
+function initSearch() {
+  const searchInput = document.getElementById('search-input');
+  const searchBtn = document.getElementById('search-btn');
+  const searchPanel = document.getElementById('search-panel');
+  const searchOverlay = document.getElementById('search-overlay');
+
+  if (!searchInput) return;
+
+  function doSearch(q) {
+    if (!q || q.length < 2) return;
+    fetch(`${API_BASE}/search?q=${encodeURIComponent(q)}`)
+      .then(r => r.json())
+      .then(data => {
+        const resultsEl = document.getElementById('search-results');
+        if (!resultsEl) return;
+        if (!data.items || data.items.length === 0) {
+          resultsEl.innerHTML = `<div class="search-empty">未找到"${q}"相关内容</div>`;
+          return;
+        }
+        let html = `<div class="search-hits">找到 ${data.total} 条结果</div>`;
+        data.items.forEach(item => {
+          const link = item.type === 'article'
+            ? `/${item.section === 'hospital' ? 'h' : 'e'}/${item.slug}.html`
+            : item.type === 'case'
+              ? `/cases.html#${item.slug}`
+              : `/news.html#news-${item.id}`;
+          html += `<a href="${link}" class="search-item" onclick="closeSearch()">
+            <span class="search-tag tag-${item.type}">${typeLabel(item.type)}</span>
+            <span class="search-title">${item.title}</span>
+            <span class="search-summary">${item.summary ? item.summary.slice(0, 60) : ''}</span>
+          </a>`;
+        });
+        resultsEl.innerHTML = html;
+      })
+      .catch(() => {
+        document.getElementById('search-results').innerHTML = '<div class="search-empty">搜索服务暂不可用</div>';
+      });
+  }
+
+  function openSearch() {
+    searchPanel.classList.add('open');
+    searchOverlay.classList.add('open');
+    searchInput.value = '';
+    searchInput.focus();
+    document.getElementById('search-results').innerHTML = '';
+  }
+
+  function closeSearch() {
+    searchPanel.classList.remove('open');
+    searchOverlay.classList.remove('open');
+  }
+
+  searchBtn.addEventListener('click', () => openSearch());
+  searchOverlay.addEventListener('click', () => closeSearch());
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeSearch();
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') { e.preventDefault(); openSearch(); }
+  });
+
+  let searchTimer;
+  searchInput.addEventListener('input', () => {
+    clearTimeout(searchTimer);
+    const val = searchInput.value.trim();
+    if (val.length < 2) {
+      document.getElementById('search-results').innerHTML = '';
+      return;
+    }
+    searchTimer = setTimeout(() => doSearch(val), 300);
+  });
+
+  searchInput.addEventListener('keydown', e => {
+    if (e.key === 'Enter') doSearch(searchInput.value.trim());
+  });
+
+  window.closeSearch = closeSearch;
+}
+
+function typeLabel(type) {
+  return { article: '文章', news: '资讯', case: '案例' }[type] || type;
+}
+
+/* ===== 页面分发 ===== */
+function initPage() {
+  const pageType = document.body.dataset.page;
+  if (pageType === 'home') initHome();
+  else if (pageType === 'news') initNews();
+  else if (pageType === 'hospital' || pageType === 'education') initArticles(pageType);
+  else if (pageType === 'cases') initCases();
+}
+
+/* ===== 首页 ===== */
+function initHome() {
+  fetch(`${API_BASE}/stats`)
+    .then(r => r.json())
+    .then(stats => {
+      // Update stats row with real numbers
+      const labels = ['专注领域', '实务文章', '每日资讯', '实战案例'];
+      const values = ['3', stats.articles + '+', stats.news + '+', stats.cases + '+'];
+      const colors = ['blue', 'green', 'blue', 'green'];
+      const details = ['医院 · 高校 · 中小学', '持续更新中', '全网自动抓取', '真实财务场景'];
+      document.querySelectorAll('.stat-card').forEach((card, i) => {
+        if (i >= values.length) return;
+        card.querySelector('.stat-num').textContent = values[i];
+        card.querySelector('.stat-num').className = `stat-num ${colors[i]}`;
+        card.querySelector('small').textContent = details[i];
+      });
+    })
+    .catch(() => {});
+
+  // Load recent news on homepage
+  const newsContainer = document.getElementById('home-news');
+  if (!newsContainer) return;
+  fetch(`${API_BASE}/news?limit=4`)
+    .then(r => r.json())
+    .then(data => {
+      if (!data.items || !data.items.length) return;
+      newsContainer.innerHTML = data.items.map(item => `
+        <a href="/news.html#news-${item.id}" class="news-mini-card">
+          <span class="news-meta">${item.category || '资讯'}</span>
+          <span class="news-title">${item.title}</span>
+          <span class="news-date">${formatDate(item.published_at)}</span>
+        </a>
+      `).join('');
+    })
+    .catch(() => {});
+}
+
+/* ===== 资讯页 ===== */
+function initNews() {
+  const container = document.getElementById('news-list');
+  if (!container) return;
+
+  const params = new URLSearchParams(window.location.search);
+  const category = params.get('category') || '';
+
+  let url = `${API_BASE}/news?limit=30`;
+  if (category) url += `&category=${encodeURIComponent(category)}`;
+
+  fetch(url)
+    .then(r => r.json())
+    .then(data => {
+      if (!data.items || !data.items.length) {
+        container.innerHTML = '<div class="empty-state">暂无资讯</div>';
+        return;
+      }
+      container.innerHTML = data.items.map(item => `
+        <article class="news-card" id="news-${item.id}">
+          <div class="news-card-header">
+            <span class="news-badge">${item.category || '资讯'}</span>
+            <span class="news-source">${item.source || ''}</span>
+            <span class="news-date">${formatDate(item.published_at)}</span>
+          </div>
+          <h3>${item.title}</h3>
+          <p>${item.summary || ''}</p>
+        </article>
+      `).join('');
+    })
+    .catch(() => {
+      container.innerHTML = '<div class="empty-state">加载失败，请稍后重试</div>';
+    });
+}
+
+/* ===== 文章列表页（医院/院校） ===== */
+function initArticles(section) {
+  const container = document.querySelector('.article-grid');
+  if (!container) return;
+
+  fetch(`${API_BASE}/articles?section=${section}&limit=20`)
+    .then(r => r.json())
+    .then(data => {
+      if (!data.items || !data.items.length) {
+        container.innerHTML = '<div class="empty-state">暂无文章</div>';
+        return;
+      }
+      container.innerHTML = data.items.map(item => `
+        <a href="/${section === 'hospital' ? 'h' : 'e'}/${item.slug}.html" class="article-card">
+          <span class="article-cat">${item.category || '实务'}</span>
+          <h3>${item.title}</h3>
+          <p>${item.summary ? item.summary.slice(0, 80) + '...' : ''}</p>
+          <span class="article-date">${formatDate(item.published_at)}</span>
+        </a>
+      `).join('');
+    })
+    .catch(() => {
+      container.innerHTML = '<div class="empty-state">加载失败</div>';
+    });
+}
+
+/* ===== 案例页 ===== */
+function initCases() {
+  const container = document.querySelector('.cases-list');
+  if (!container) return;
+
+  fetch(`${API_BASE}/cases?limit=20`)
+    .then(r => r.json())
+    .then(data => {
+      if (!data.items || !data.items.length) {
+        container.innerHTML = '<div class="empty-state">暂无案例</div>';
+        return;
+      }
+      container.innerHTML = data.items.map(item => `
+        <div class="case-card" id="${item.slug}">
+          <h3>${item.title}</h3>
+          <p>${item.summary || ''}</p>
+          <div class="case-meta">
+            <span>${item.category || '财务案例'}</span>
+            <span>${formatDate(item.published_at)}</span>
+          </div>
+        </div>
+      `).join('');
+    })
+    .catch(() => {
+      container.innerHTML = '<div class="empty-state">加载失败</div>';
+    });
+}
+
+/* ===== 工具 ===== */
+function formatDate(dateStr) {
+  if (!dateStr) return '';
+  const d = new Date(dateStr);
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}

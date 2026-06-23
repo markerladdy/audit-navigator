@@ -7,7 +7,7 @@
   <meta name="description" content="医院与院校财务专用工具免费下载，财务分析模板、预算管理工具和用友操作手册。">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body data-page="tools">
 
 <header>
   <nav>
@@ -25,8 +25,19 @@
       <a href="tools.html" class="active">🔧 工具下载</a>
       <a href="about.html">关于</a>
     </div>
+      <button class="search-toggle" id="search-btn" aria-label="搜索">🔍</button>
   </nav>
 </header>
+
+<!-- 搜索面板 -->
+<div class="search-overlay" id="search-overlay"></div>
+<div class="search-panel" id="search-panel">
+  <div class="search-panel-header">
+    <input type="text" id="search-input" placeholder="搜索文章、资讯、案例… (Ctrl+K)" autocomplete="off">
+    <button onclick="closeSearch()" class="search-close">✕</button>
+  </div>
+  <div class="search-results" id="search-results"></div>
+</div>
 
 <div class="page-header">
   <h1>🔧 专业工具下载</h1>

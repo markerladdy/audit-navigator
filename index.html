@@ -8,7 +8,7 @@
   <meta name="keywords" content="医院会计核算,高校财务管理,中小学会计,用友软件,HRP,医院财务,教育财务">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body data-page="home">
 
 <header>
   <nav>
@@ -26,8 +26,19 @@
       <a href="tools.html">🔧 工具下载</a>
       <a href="about.html">关于</a>
     </div>
+    <button class="search-toggle" id="search-btn" aria-label="搜索">🔍</button>
   </nav>
 </header>
+
+<!-- 搜索面板 -->
+<div class="search-overlay" id="search-overlay"></div>
+<div class="search-panel" id="search-panel">
+  <div class="search-panel-header">
+    <input type="text" id="search-input" placeholder="搜索文章、资讯、案例… (Ctrl+K)" autocomplete="off">
+    <button onclick="closeSearch()" class="search-close">✕</button>
+  </div>
+  <div class="search-results" id="search-results"></div>
+</div>
 
 <section class="hero">
   <h1>医院 · 高校 · 中小学<br><span class="hl-blue">会计核算</span>与<span class="hl-green">财务管理</span>专业平台</h1>
@@ -55,6 +66,17 @@
   <div class="stat-card">
     <div class="stat-num green">每日</div>
     <div class="stat-label">全网资讯<br><small>自动抓取更新</small></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-container">
+    <div class="section-header">
+      <h2>最新资讯</h2>
+      <p>实时动态更新，第一时间掌握行业动向</p>
+    </div>
+    <div class="home-news" id="home-news"></div>
+    <div style="text-align:center;margin-top:1rem"><a href="news.html" class="btn btn-outline">查看全部资讯 →</a></div>
   </div>
 </div>
 
