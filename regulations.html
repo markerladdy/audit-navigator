@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>制度法规 — 医教财通</title>
+  <meta name="description" content="医院与院校会计核算、财务管理、资产管理、预算管理及年度决算所依据的国家制度法规汇编。">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="regulations">
+
+<header>
+  <nav>
+    <a href="index.html" class="logo">
+      <span class="icon">🏥</span>
+      <div>医教财通<span class="sub">Medical & Education Finance</span></div>
+    </a>
+    <button class="hamburger" aria-label="菜单"><span></span><span></span><span></span></button>
+    <div class="nav-links">
+      <a href="index.html">首页</a>
+      <a href="hospital.html">🏥 医院专区</a>
+      <a href="education.html">🏫 院校专区</a>
+      <a href="news.html">📰 每日资讯</a>
+      <a href="cases.html">📋 实例讲解</a>
+      <a href="tools.html">🔧 工具下载</a>
+      <a href="regulations.html" class="active">📜 制度法规</a>
+      <a href="about.html">关于</a>
+    </div>
+    <button class="search-toggle" id="search-btn" aria-label="搜索">🔍</button>
+  </nav>
+</header>
+
+<div class="search-overlay" id="search-overlay"></div>
+<div class="search-panel" id="search-panel">
+  <div class="search-panel-header">
+    <input type="text" id="search-input" placeholder="搜索文章、资讯、案例… (Ctrl+K)" autocomplete="off">
+    <button onclick="closeSearch()" class="search-close">✕</button>
+  </div>
+  <div class="search-results" id="search-results"></div>
+</div>
+
+<div class="page-header">
+  <h1>📜 制度法规参考</h1>
+  <p>医院与院校财务工作所依据的国家法律法规、部门规章及规范性文件汇编</p>
+  <div class="tagline">
+    <span class="tag-hospital">医院</span>
+    <span class="tag-edu">院校</span>
+    <span class="tag-tool">通用</span>
+  </div>
+</div>
+
+<section class="section">
+  <div class="section-container">
+
+    <div class="section-header">
+      <h2>📌 通用法律法规</h2>
+      <p>适用于所有行政事业单位的基础法律</p>
+    </div>
+    <div class="reg-grid">
+      <div class="reg-card">
+        <span class="reg-badge general">法律</span>
+        <h3>《中华人民共和国会计法》</h3>
+        <p class="reg-num">全国人大常委会 · 1985年颁布，2017年第三次修订</p>
+        <p class="reg-desc">会计核算和会计监督的基本法律依据，规定了会计机构、会计人员的职责权限和法律责任。</p>
+      </div>
+      <div class="reg-card">
+        <span class="reg-badge general">法律</span>
+        <h3>《中华人民共和国预算法》</h3>
+        <p class="reg-num">全国人大常委会 · 1994年颁布，2018年第二次修订</p>
+        <p class="reg-desc">规范预算管理行为的基本法律，涵盖预算编制、审批、执行、调整、决算及监督全过程。</p>
+      </div>
+      <div class="reg-card">
+        <span class="reg-badge general">法律</span>
+        <h3>《中华人民共和国审计法》</h3>
+        <p class="reg-num">全国人大常委会 · 1994年颁布，2021年修订</p>
+        <p class="reg-desc">审计监督的基本法律依据，规定了审计机关对财政收支、财务收支的审计监督权限和程序。</p>
+      </div>
+      <div class="reg-card">
+        <span class="reg-badge general">财政部令</span>
+        <h3>《会计基础工作规范》</h3>
+        <p class="reg-num">财会字〔1996〕19号 · 1996年发布，2019年修订</p>
+        <p class="reg-desc">规范会计凭证填制、账簿登记、报表编制等基础工作，是单位会计工作的基本操作规范。</p>
+      </div>
+      <div class="reg-card">
+        <span class="reg-badge general">财政部令</span>
+        <h3>《会计档案管理办法》</h3>
+        <p class="reg-num">财政部 国家档案局令第79号 · 2015年发布</p>
+        <p class="reg-desc">规定会计档案的归档范围、保管期限、销毁程序及电子会计档案的管理要求。</p>
+      </div>
+      <div class="reg-card">
+        <span class="reg-badge general">财政部</span>
+        <h3>《政府会计制度——行政事业单位会计科目和报表》</h3>
+        <p class="reg-num">财会〔2017〕25号 · 2017年发布，2019年起施行</p>
+        <p class="reg-desc">构建了政府会计"财务会计与预算会计适度分离并相互衔接"的核算模式，适用于各级行政单位和事业单位。</p>
+      </div>
+      <div class="reg-card">
+        <span class="reg-badge general">财政部</span>
+        <h3>《行政事业单位内部控制规范（试行）》</h3>
+        <p class="reg-num">财会〔2012〕21号 · 2012年发布</p>
+        <p class="reg-desc">规范行政事业单位内部控制建设，涵盖预算、收支、采购、资产、建设项目、合同六大业务领域。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="section-container">
+    <div class="section-header">
+      <h2>🏥 医院财务制度体系</h2>
+      <p>适用于公立医院会计核算与财务管理的行业专项制度</p>
+    </div>
+    <div class="reg-grid">
+      <div class="reg-card">
+        <span class="reg-badge hospital">财政部</span>
+        <h3>《医院会计制度》</h3>
+        <p class="reg-num">财会〔2010〕27号 · 2011年7月1日起施行</p>
+        <p class="reg-desc">公立医院会计核算的专项制度，规定了医院会计科目设置、账务处理和财务报表编制。采用权责发生制，区分医疗业务和财政资金的核算。</p>
+      </div>
+      <div class="reg-card">
+        <span class="reg-badge hospital">财政部·卫健委</span>
+        <h3>《医院财务制度》</h3>
+        <p class="reg-num">财社〔2010〕306号 · 2011年7月1日起施行</p>
+        <p class="reg-desc">公立医院财务管理的基本制度，涵盖预算管理、收入管理、支出管理、成本管理、资产管理等内容。</p>
+      </div>
+      <div class="reg-card">
+        <span class="reg-badge hospital">国家卫健委</span>
+        <h3>《公立医院成本核算规范》</h3>
+        <p class="reg-num">国卫财务发〔2021〕4号 · 2021年发布</p>
+        <p class="reg-desc">规定了公立医院开展科室成本、项目成本、病种成本三级核算的具体方法和操作要求。</p>
+      </div>
+      <div class="reg-card">
+        <span class="reg-badge hospital">国家卫健委</span>
+        <h3>《公立医院全面预算管理制度实施办法》</h3>
+        <p class="reg-num">国卫财务发〔2020〕30号 · 2020年发布</p>
+        <p class="reg-desc">要求公立医院建立全面预算管理体系，涵盖预算编制、审批、执行、调整、分析和考核全流程。</p>
+      </div>
+      <div class="reg-card">
+        <span class="reg-badge hospital">国家卫健委</span>
+        <h3>《公立医院内部控制管理办法》</h3>
+        <p class="reg-num">国卫财务发〔2021〕1号 · 2021年发布</p>
+        <p class="reg-desc">针对公立医院的行业内控管理规范，明确了医院层面和业务层面的内控建设要求。</p>
+      </div>
+      <div class="reg-card">
+        <span class="reg-badge hospital">国家卫健委</span>
+        <h3>《公立医院绩效考核指标（财务相关）》</h3>
+        <p class="reg-num">国家卫健委 · 年度更新</p>
+        <p class="reg-desc">三级公立医院绩效考核中涉及财务管理的指标，包括医疗费用控制、成本效率、资产管理等维度。</p>
+      </div>
+      <div class="reg-card">
+        <span class="reg-badge hospital">财政部</span>
+        <h3>《医院执行政府会计制度补充规定》</h3>
+        <p class="reg-num">财会〔2018〕24号 · 2018年发布</p>
+        <p class="reg-desc">规范医院执行政府会计制度时的科目转换、报表衔接等具体操作问题。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-container">
+    <div class="section-header">
+      <h2>🏫 院校财务制度体系</h2>
+      <p>适用于高等学校和中小学的专项会计与财务制度</p>
+    </div>
+
+    <h3 style="color:var(--edu-green);margin-bottom:16px;">🎓 高等学校</h3>
+    <div class="reg-grid">
+      <div class="reg-card">
+        <span class="reg-badge edu">财政部</span>
+        <h3>《高等学校会计制度》</h3>
+        <p class="reg-num">财会〔2013〕30号 · 2014年1月1日起施行</p>
+        <p class="reg-desc">高等学校会计核算的专项制度，涵盖资产、负债、净资产、收入、支出五大要素的核算规范。</p>
+      </div>
+      <div class="reg-card">
+        <span class="reg-badge edu">财政部·教育部</span>
+        <h3>《高等学校财务制度》</h3>
+        <p class="reg-num">财教〔2012〕488号 · 2013年1月1日起施行</p>
+        <p class="reg-desc">规范高等学校财务管理行为，涵盖预算管理、收入管理、支出管理、结转结余管理、资产管理等。</p>
+      </div>
+      <div class="reg-card">
+        <span class="reg-badge edu">财政部·科技部</span>
+        <h3>《国家重点研发计划资金管理办法》</h3>
+        <p class="reg-num">财教〔2021〕178号 · 2021年发布</p>
+        <p class="reg-desc">规范国家重点研发计划项目资金的预算编制、经费使用、财务验收等管理要求。</p>
+      </div>
+      <div class="reg-card">
+        <span class="reg-badge edu">国务院</span>
+        <h3>《关于改革完善中央财政科研经费管理的若干意见》</h3>
+        <p class="reg-num">国办发〔2021〕32号 · 2021年发布</p>
+        <p class="reg-desc">扩大科研经费管理自主权，简化预算编制，下放预算调剂权，加大激励力度。</p>
+      </div>
+      <div class="reg-card">
+        <span class="reg-badge edu">教育部</span>
+        <h3>《高等学校科研经费管理办法》</h3>
+        <p class="reg-num">教育部 · 相关文件汇编</p>
+        <p class="reg-desc">规范高校科研经费的预算管理、支出审批、结题审计等环节，实行项目负责人负责制。</p>
+      </div>
+    </div>
+
+    <h3 style="color:var(--edu-green);margin:32px 0 16px;">📚 中小学</h3>
+    <div class="reg-grid">
+      <div class="reg-card">
+        <span class="reg-badge edu">财政部</span>
+        <h3>《中小学校会计制度》</h3>
+        <p class="reg-num">财会〔2013〕28号 · 2014年1月1日起施行</p>
+        <p class="reg-desc">中小学校会计核算的专项制度，采用收付实现制为基础，部分经济业务适用权责发生制。</p>
+      </div>
+      <div class="reg-card">
+        <span class="reg-badge edu">财政部·教育部</span>
+        <h3>《中小学校财务制度》</h3>
+        <p class="reg-num">财教〔2012〕489号 · 2013年1月1日起施行</p>
+        <p class="reg-desc">中小学校财务管理的基本制度，涵盖预算管理、收入支出管理、资产管理及财务监督。</p>
+      </div>
+      <div class="reg-card">
+        <span class="reg-badge edu">教育部</span>
+        <h3>《农村义务教育学校食堂管理暂行办法》</h3>
+        <p class="reg-num">教财〔2012〕2号 · 2012年发布</p>
+        <p class="reg-desc">规范农村义务教育学校食堂的财务管理，要求食堂实行独立核算，食材采购公开透明。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="section-container">
+    <div class="section-header">
+      <h2>📋 资产管理专项制度</h2>
+      <p>行政事业单位国有资产管理的核心法规</p>
+    </div>
+    <div class="reg-grid">
+      <div class="reg-card">
+        <span class="reg-badge general">国务院</span>
+        <h3>《行政事业性国有资产管理条例》</h3>
+        <p class="reg-num">国务院令第738号 · 2021年4月1日起施行</p>
+        <p class="reg-desc">行政事业性国有资产管理的第一部行政法规，涵盖资产配置、使用、处置和预算管理。</p>
+      </div>
+      <div class="reg-card">
+        <span class="reg-badge general">财政部</span>
+        <h3>《事业单位国有资产管理暂行办法》</h3>
+        <p class="reg-num">财政部令第36号 · 2006年发布，2019年修订</p>
+        <p class="reg-desc">规范事业单位国有资产的配置、使用、处置、评估、清查及信息管理等各环节。</p>
+      </div>
+      <div class="reg-card">
+        <span class="reg-badge general">财政部</span>
+        <h3>《政府采购法实施条例》</h3>
+        <p class="reg-num">国务院令第658号 · 2015年3月1日起施行</p>
+        <p class="reg-desc">规范政府采购行为，对采购方式、采购程序、采购合同及监督检查做出详细规定。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-container">
+    <div class="section-header">
+      <h2>🔍 审计监督专项制度</h2>
+    </div>
+    <div class="reg-grid">
+      <div class="reg-card">
+        <span class="reg-badge general">审计署</span>
+        <h3>《中华人民共和国国家审计准则》</h3>
+        <p class="reg-num">审计署令第8号 · 2011年1月1日起施行</p>
+        <p class="reg-desc">规范审计机关和审计人员执行审计业务的行为，涵盖审计计划、实施、报告和质量控制。</p>
+      </div>
+      <div class="reg-card">
+        <span class="reg-badge general">财政部</span>
+        <h3>《内部审计准则》</h3>
+        <p class="reg-num">中国内部审计协会 · 2013年发布，持续更新</p>
+        <p class="reg-desc">单位内部审计工作的专业标准和行为规范，涵盖内部审计的程序、方法和报告要求。</p>
+      </div>
+      <div class="reg-card">
+        <span class="reg-badge general">财政部</span>
+        <h3>《财政违法行为处罚处分条例》</h3>
+        <p class="reg-num">国务院令第427号 · 2004年发布，2011年修订</p>
+        <p class="reg-desc">明确财政违法行为的种类、处罚处分措施及责任追究程序。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <h2>每篇文章均标注法规依据</h2>
+  <p>本站所有实务文章和案例均在正文末尾标注所依据的制度法规名称及文号，便于对照查阅。</p>
+  <a href="hospital.html" class="btn btn-primary">🏥 浏览医院专区</a>
+  <a href="education.html" class="btn btn-outline" style="margin-left:12px;">🏫 浏览院校专区</a>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>🏥 医教财通</h3>
+      <p>专注医院与院校财务实务，深耕会计核算、财务管理与用友软件应用。</p>
+    </div>
+    <div class="footer-col">
+      <h4>内容专区</h4>
+      <a href="hospital.html">医院专区</a>
+      <a href="education.html">院校专区</a>
+      <a href="cases.html">实例讲解</a>
+    </div>
+    <div class="footer-col">
+      <h4>资源</h4>
+      <a href="news.html">每日资讯</a>
+      <a href="tools.html">工具下载</a>
+      <a href="regulations.html">制度法规</a>
+      <a href="about.html">关于我们</a>
+    </div>
+    <div class="footer-col">
+      <h4>联系方式</h4>
+      <a href="about.html">在线留言</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2026 医教财通 · Medical & Education Finance Navigator
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
