@@ -3,101 +3,181 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>用友设计制造一体化解决方案 — 在线演示</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
-      background: #1e293b;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-    .top-bar {
-      background: #0f172a;
-      padding: 12px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-shrink: 0;
-    }
-    .top-bar h1 {
-      font-size: 16px;
-      font-weight: 600;
-      color: #f1f5f9;
-    }
-    .top-bar .actions {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-    }
-    .top-bar .actions a, .top-bar .actions button {
-      padding: 6px 16px;
-      border-radius: 6px;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background 0.2s;
-    }
-    .btn-download {
-      background: #2563eb;
-      color: white;
-      border: none;
-    }
-    .btn-download:hover { background: #1d4ed8; }
-    .btn-back {
-      background: #334155;
-      color: #e2e8f0;
-      border: none;
-    }
-    .btn-back:hover { background: #475569; }
-    .iframe-wrapper {
-      flex: 1;
-      position: relative;
-      width: 100%;
-    }
-    .iframe-wrapper iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-    .loading {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: #94a3b8;
-      font-size: 15px;
-      text-align: center;
-    }
-    @media (max-width: 768px) {
-      .top-bar { flex-wrap: wrap; gap: 8px; }
-      .top-bar h1 { font-size: 14px; }
-    }
-  </style>
+  <title>用友设计制造一体化：打通企业研发到制造 — 医教财通</title>
+  <meta name="description" content="深度解读用友设计制造一体化解决方案：ERP+PLM数据一体化、平台化模块化设计、智能制造案例实践。">
+  <link rel="stylesheet" href="../css/style.css">
+  <base href="../">
 </head>
 <body>
 
-<div class="top-bar">
-  <h1>📊 用友设计制造一体化解决方案</h1>
-  <div class="actions">
-    <a href="../education.html#yonyou" class="btn-back">← 返回</a>
-    <a href="../downloads/用友高校实训-智能制造.pptx" class="btn-download">⬇ 下载PPT</a>
+<header>
+  <nav>
+    <a href="index.html" class="logo"><span class="icon">🏥</span><div>医教财通<span class="sub">Medical & Education Finance</span></div></a>
+    <button class="hamburger" aria-label="菜单"><span></span><span></span><span></span></button>
+    <div class="nav-links">
+      <a href="index.html">首页</a>
+      <a href="hospital.html">🏥 医院专区</a>
+      <a href="education.html" class="active">🏫 院校专区</a>
+      <a href="news.html">📰 每日资讯</a>
+      <a href="cases.html">📋 实例讲解</a>
+      <a href="tools.html">🔧 工具下载</a>
+      <a href="about.html">关于</a>
+    </div>
+  </nav>
+</header>
+
+<div class="page-header" style="padding:120px 24px 50px;">
+  <p style="color:rgba(255,255,255,0.5);font-size:13px;margin-bottom:6px;">用友软件应用 / 高校实训</p>
+  <h1 style="font-size:34px;">用友设计制造一体化<br>打通企业研发到制造的"最后一公里"</h1>
+  <p style="margin-top:10px;font-size:15px;max-width:650px;">基于用友PLM+ERP的数据一体化解决方案深度解读</p>
+  <div class="tagline"><span class="tag-edu">用友PLM</span><span class="tag-edu">智能制造</span><span class="tag-edu">ERP+PLM</span></div>
+</div>
+
+<nav class="sub-nav" style="top:var(--header-height);">
+  <div class="sub-nav-inner">
+    <a href="#intro" class="edu-link">背景趋势</a>
+    <a href="#core" class="edu-link">核心方案</a>
+    <a href="#data" class="edu-link">数据一体化</a>
+    <a href="#platform" class="edu-link">模块化设计</a>
+    <a href="#cases" class="edu-link">实践案例</a>
+    <a href="#download" class="edu-link">下载PPT</a>
   </div>
+</nav>
+
+<div class="content-page">
+
+  <!-- 引言 -->
+  <div style="background:linear-gradient(135deg,#f0fdf4,#f0fdfa);padding:32px 24px;border-radius:12px;margin-bottom:40px;border:1px solid #bbf7d0;">
+    <p style="font-size:16px;line-height:1.9;color:#065f46;">
+      <strong>本文导读：</strong>62页PPT浓缩精华。从工业4.0背景出发，深入解析用友如何通过ERP与PLM的数据一体化，帮助企业打通从研发设计到生产制造的完整价值链。文中包含平台化模块化设计方法论、超级BOM配置机制，以及中航工业、天津赛象等真实案例。
+    </p>
+    <p style="margin-top:12px;font-size:13px;color:#047857;">演讲人：李光锐 · 用友网络 PLM业务部总经理</p>
+  </div>
+
+  <!-- 第一部分 -->
+  <h2 id="intro">一、为什么是"设计制造一体化"？</h2>
+
+  <h3>工业4.0与中国制造2025</h3>
+  <p>德国率先提出"工业4.0"——以智能制造为核心的第四次工业革命，将传统制造技术与互联网技术融合，产生智能化的机械设备制造。一个形象的描述是：<strong>信息可以从企业ERP系统一直向下，穿透整个工厂网络延伸到装备的某一个I/O节点，反之亦然。</strong></p>
+  <p>这本质上就是产品生命周期全过程管理的整合。智慧工厂是人、设备、环境、数据的互动。</p>
+
+  <h3>中国制造2025的核心方向</h3>
+  <ul>
+    <li>推行数字化、网络化、智能化制造</li>
+    <li>提升产品设计能力</li>
+    <li>完善制造业技术创新体系</li>
+    <li>强化制造基础</li>
+    <li>推进信息化与工业化深度融合</li>
+  </ul>
+
+  <div style="background:#f1f5f9;padding:20px;border-radius:8px;margin:20px 0;">
+    <p style="font-size:14px;color:#475569;"><strong>💡 核心观点：</strong>数字化创建了数字世界，网络化发展了数字世界，智能化则意味着<strong>数字世界与实体世界走向融合</strong>。企业的信息化是互联网化的基础，产品创新是企业的必然战略选择。</p>
+  </div>
+
+  <!-- 第二部分 -->
+  <h2 id="core">二、用友 All in One 制造业解决方案</h2>
+
+  <p>用友将ERP、PLM、CRM等产品整合为统一的"All in One"平台，覆盖从接单、研发、生产到交付的全流程。</p>
+
+  <div style="background:#f0fdfa;padding:24px;border-radius:8px;border:1px solid #99f6e4;margin:24px 0;">
+    <h3 style="color:#0f766e;margin-top:0;">两大核心内容</h3>
+    <p style="font-weight:600;margin-bottom:12px;font-size:16px;">① 用友ERP+PLM的<strong style="color:#2563eb;">数据一体化</strong></p>
+    <p style="font-size:14px;">数据的一致性表达是设计制造一体化的基础。用友实现PLM与ERP间的单点登录、全数据映射、业务单据互查、流程对接——相较传统集成方式，不再需要在各系统间"船来船往"。</p>
+    <p style="font-weight:600;margin:16px 0 12px;font-size:16px;">② 用友ERP+PLM的<strong style="color:#059669;">业务一体化</strong></p>
+    <p style="font-size:14px;">项目过程是可以流程化的，流程化的就是可以管理的。用友将新产品研发（IPD集成产品开发）、汽车行业APQP、装备制造项目管控等业务流程在统一平台上落地。</p>
+  </div>
+
+  <!-- 第三部分 -->
+  <h2 id="data">三、数据一体化：打通信息孤岛的"跨海大桥"</h2>
+
+  <blockquote style="border-left:4px solid #059669;padding:16px 20px;margin:20px 0;background:#f8fafc;border-radius:0 8px 8px 0;">
+    <p style="font-style:italic;color:#334155;">"设计制造一体化，就好比是信息孤岛之间的跨海大桥——双向互通，还不收费。传统的PLM与ERP集成，好比是在各孤岛间船来船往。码头好比集成接口，船是数据中间载体，需中间转换，效率低，且双向收费。"</p>
+  </blockquote>
+
+  <h3>用友数据一体化的关键技术点</h3>
+  <ul>
+    <li><strong>统一物料库</strong>：基于单层变式BOM配置管理的统一物料库，涵盖零部件、原辅物料、外购件、毛坯工装等</li>
+    <li><strong>设计BOM→工艺BOM→生产BOM</strong>：从产品方案设计到技术设计、工艺设计、生产制造，BOM数据沿全线流转</li>
+    <li><strong>项目管理为主线</strong>：按项目展开一级计划→产品装配网络计划→关键自制件网络计划→生产派工单</li>
+  </ul>
+
+  <div style="background:#f1f5f9;padding:16px;border-radius:8px;margin:20px 0;font-size:14px;color:#475569;">
+    <strong>📌 装备制造的特点：</strong>单件小批生产模式，边设计、边改边生产。要求在数据一致前提下，支持设计按部套分别提交ERP，并在设计更改后第一时间提交给ERP。
+  </div>
+
+  <!-- 第四部分 -->
+  <h2 id="platform">四、平台化、系列化、模块化设计</h2>
+
+  <p>用友的解决方案支持以平台化、系列化、模块化为基础，通过选配和参数化配置，快速响应客户个性化需求——<strong>即C2M（Customer-to-Manufacturer）模式</strong>。</p>
+
+  <h3>超级BOM与选配配置</h3>
+  <ul>
+    <li><strong>产品族定义</strong>：平台设计、产品族分类管理</li>
+    <li><strong>模块资源库</strong>：基本模块、辅助模块、可选模块、专用模块的构建</li>
+    <li><strong>基于可选/可替换条件的选配</strong>：在超级BOM中定义模块参数和条件</li>
+    <li><strong>配置后的改型设计</strong>：在标准配置基础上支持个性化改动</li>
+  </ul>
+
+  <p>这种方法的优势在于：在满足客户个性化需求的同时，最大化复用已有设计和物料，降低研发成本和周期。</p>
+
+  <!-- 第五部分 -->
+  <h2 id="cases">五、典型案例</h2>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0;">
+    <div style="background:white;border:1px solid #e2e8f0;border-radius:8px;padding:20px;border-left:4px solid #059669;">
+      <h4 style="color:#065f46;margin-top:0;">✈️ 中航工业津电</h4>
+      <p style="font-size:13px;color:#475569;">中国第一家制造航空电器的国有企业。PLM项目3个月上线，涵盖产品工艺设计部门，建立完整的产品数据体系，打通设计与生产环节。</p>
+    </div>
+    <div style="background:white;border:1px solid #e2e8f0;border-radius:8px;padding:20px;border-left:4px solid #059669;">
+      <h4 style="color:#065f46;margin-top:0;">🔧 天津赛象科技</h4>
+      <p style="font-size:13px;color:#475569;">子午线轮胎设备制造商，国家级企业技术中心。用友PLM 7.6 + U9 ERP + AutoCAD Inventor集成，实现设计制造数据贯通。</p>
+    </div>
+    <div style="background:white;border:1px solid #e2e8f0;border-radius:8px;padding:20px;border-left:4px solid #059669;">
+      <h4 style="color:#065f46;margin-top:0;">🚛 山西大运汽车</h4>
+      <p style="font-size:13px;color:#475569;">总资产26亿元，国内一流四大工艺生产线。用友PLM+U9，覆盖重卡从研发到生产的全流程管理。</p>
+    </div>
+    <div style="background:white;border:1px solid #e2e8f0;border-radius:8px;padding:20px;border-left:4px solid #059669;">
+      <h4 style="color:#065f46;margin-top:0;">⚡ 江苏华鹏变压器</h4>
+      <p style="font-size:13px;color:#475569;">四十余年专业变压器制造商，产品应用于特高压、轨道交通、航空航天等领域。</p>
+    </div>
+  </div>
+
+  <h3>实施方法论：咨询式实施</h3>
+  <p>用友的"咨询式实施"通过诊断分析总结企业成功基因，发现不足并优化过程。核心理念是：<strong>真正提升管理水平的不是软件，而是建立一套科学有效的管理体系</strong>，实施结果不是写报告，而是要落地到信息系统。</p>
+
+  <!-- 结语 -->
+  <div style="background:linear-gradient(135deg,#0f172a,#1e293b);color:white;padding:32px;border-radius:12px;margin:40px 0;">
+    <h3 style="color:#34d399;margin-top:0;">💎 核心价值总结</h3>
+    <p style="color:#cbd5e1;margin-bottom:12px;">用友设计制造一体化解决方案的核心价值在于：</p>
+    <ul style="color:#cbd5e1;">
+      <li style="margin-bottom:6px;"><strong style="color:#34d399;">一个平台</strong> — ERP+PLM统一数据底座，消除信息孤岛</li>
+      <li style="margin-bottom:6px;"><strong style="color:#34d399;">一条主线</strong> — 以项目管理贯穿产品全生命周期</li>
+      <li style="margin-bottom:6px;"><strong style="color:#34d399;">一套数据</strong> — 统一物料库，设计BOM→生产BOM自动流转</li>
+      <li style="margin-bottom:6px;"><strong style="color:#34d399;">一种模式</strong> — 平台化模块化设计，支撑C2M个性化定制</li>
+    </ul>
+  </div>
+
+  <!-- 下载 -->
+  <div id="download" style="text-align:center;padding:32px;background:#f8fafc;border-radius:12px;border:1px solid #e2e8f0;margin-bottom:40px;">
+    <h3 style="color:#0f172a;">📥 下载原始PPT</h3>
+    <p style="color:#64748b;font-size:14px;margin-bottom:16px;">本文章节基于62页PPT提炼而成，如需查看完整原始内容（含图表、流程示意图等），可下载原文件。</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a href="../downloads/用友高校实训-智能制造.pptx" class="btn btn-edu">⬇ 下载PPT（21MB）</a>
+      <a href="../education.html#yonyou" class="btn" style="background:#e2e8f0;color:#334155;">← 返回院校专区</a>
+    </div>
+  </div>
+
 </div>
 
-<div class="iframe-wrapper">
-  <div class="loading">正在加载 Office 在线查看器...</div>
-  <iframe
-    src="https://view.officeapps.live.com/op/embed.aspx?src=https://auditnavigator.de5.net/downloads/%E7%94%A8%E5%8F%8B%E9%AB%98%E6%A0%A1%E5%AE%9E%E8%AE%AD-%E6%99%BA%E8%83%BD%E5%88%B6%E9%80%A0.pptx"
-    allowfullscreen
-    onload="document.querySelector('.loading').style.display='none'"
-  ></iframe>
-</div>
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand"><h3>🏥 医教财通</h3><p>专注医院与院校财务实务。</p></div>
+    <div class="footer-col"><h4>内容专区</h4><a href="hospital.html">医院专区</a><a href="education.html">院校专区</a><a href="cases.html">实例讲解</a></div>
+    <div class="footer-col"><h4>资源</h4><a href="news.html">每日资讯</a><a href="tools.html">工具下载</a><a href="about.html">关于我们</a></div>
+  </div>
+  <div class="footer-bottom">© 2026 医教财通</div>
+</footer>
 
+<script src="js/main.js"></script>
 </body>
 </html>
