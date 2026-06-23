@@ -60,10 +60,10 @@ function initSearch() {
         let html = `<div class="search-hits">找到 ${data.total} 条结果</div>`;
         data.items.forEach(item => {
           const link = item.type === 'article'
-            ? `article.html?slug=${item.slug}&type=article`
+            ? `/article.html?slug=${item.slug}&type=article`
             : item.type === 'case'
-              ? `article.html?slug=${item.slug}&type=case`
-              : `article.html?id=${item.id}&type=news`;
+              ? `/article.html?slug=${item.slug}&type=case`
+              : `/article.html?id=${item.id}&type=news`;
           html += `<a href="${link}" class="search-item" onclick="closeSearch()">
             <span class="search-tag tag-${item.type}">${typeLabel(item.type)}</span>
             <span class="search-title">${item.title}</span>
@@ -156,7 +156,7 @@ function initHome() {
     .then(data => {
       if (!data.items || !data.items.length) return;
       newsContainer.innerHTML = data.items.map(item => `
-        <a href="article.html?id=${item.id}&type=news" class="news-mini-card">
+        <a href="/article.html?id=${item.id}&type=news" class="news-mini-card">
           <span class="news-meta">${item.category || '资讯'}</span>
           <span class="news-title">${item.title}</span>
           <span class="news-date">${formatDate(item.published_at)}</span>
@@ -185,7 +185,7 @@ function initNews() {
         return;
       }
       container.innerHTML = data.items.map(item => `
-        <a href="article.html?id=${item.id}&type=news" class="news-card" id="news-${item.id}" style="display:block;text-decoration:none;color:inherit;">
+        <a href="/article.html?id=${item.id}&type=news" class="news-card" id="news-${item.id}" style="display:block;text-decoration:none;color:inherit;">
           <div class="news-card-header">
             <span class="news-badge">${item.category || '资讯'}</span>
             <span class="news-source">${item.source || ''}</span>
@@ -214,7 +214,7 @@ function initArticles(section) {
         return;
       }
       container.innerHTML = data.items.map(item => `
-        <a href="article.html?slug=${item.slug}&type=article" class="article-card">
+        <a href="/article.html?slug=${item.slug}&type=article" class="article-card">
           <span class="article-cat">${item.category || '实务'}</span>
           <h3>${item.title}</h3>
           <p>${item.summary ? item.summary.slice(0, 80) + '...' : ''}</p>
@@ -240,7 +240,7 @@ function initCases() {
         return;
       }
       container.innerHTML = data.items.map(item => `
-        <a href="article.html?slug=${item.slug}&type=case" class="case-card" id="${item.slug}" style="display:block;text-decoration:none;color:inherit;">
+        <a href="/article.html?slug=${item.slug}&type=case" class="case-card" id="${item.slug}" style="display:block;text-decoration:none;color:inherit;">
           <h3>${item.title}</h3>
           <p>${item.summary || ''}</p>
           <div class="case-meta">
@@ -271,13 +271,13 @@ function initArticleDetail() {
   let apiUrl, backUrl;
   if (type === 'case') {
     apiUrl = `${API_BASE}/cases/${slug}`;
-    backUrl = 'cases.html';
+    backUrl = '/cases';
   } else if (type === 'news') {
     apiUrl = `${API_BASE}/news/${id}`;
-    backUrl = 'news.html';
+    backUrl = '/news';
   } else {
     apiUrl = `${API_BASE}/articles/${slug}`;
-    backUrl = window.location.search.includes('section=hospital') ? 'hospital.html' : 'education.html';
+    backUrl = '/education';
   }
 
   fetch(apiUrl)
@@ -286,6 +286,10 @@ function initArticleDetail() {
       return r.json();
     })
     .then(item => {
+      // Set back URL based on actual content
+      if (type === 'article') {
+        backUrl = item.section === 'hospital' ? '/hospital' : '/education';
+      }
       document.title = `${item.title} — 医教财通`;
       document.getElementById('article-title').textContent = item.title;
 
