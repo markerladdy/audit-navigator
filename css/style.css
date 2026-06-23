@@ -508,3 +508,61 @@ footer {
   text-align: center; padding: 48px 20px; color: var(--text-light);
   font-size: 15px;
 }
+
+/* ===== 文章详情页 ===== */
+.article-meta-bar {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  margin-top: 8px; font-size: 14px;
+}
+.article-meta-tag {
+  font-size: 12px; padding: 3px 10px; border-radius: 6px;
+  background: #f1f5f9; color: var(--text-light); font-weight: 500;
+}
+.article-meta-tag.tag-hospital { background: var(--hospital-bg); color: var(--hospital); }
+.article-meta-tag.tag-edu { background: var(--edu-bg); color: var(--edu-green); }
+.article-meta-author { color: var(--text-light); font-size: 13px; }
+.article-meta-date { color: var(--text-muted); font-size: 13px; }
+
+.article-detail {
+  max-width: 800px; margin: 0 auto;
+}
+.article-body {
+  background: white; border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 40px 48px;
+  line-height: 1.8; font-size: 15px; color: var(--text);
+}
+.article-body h2 {
+  font-size: 20px; margin: 32px 0 12px; color: var(--primary);
+  padding-bottom: 8px; border-bottom: 2px solid var(--border);
+}
+.article-body h3 {
+  font-size: 17px; margin: 24px 0 8px; color: var(--text);
+}
+.article-body p { margin-bottom: 12px; }
+.article-body ul, .article-body ol { margin: 8px 0 16px 24px; }
+.article-body li { margin-bottom: 6px; }
+.article-body pre {
+  background: #f8fafc; border: 1px solid var(--border);
+  border-radius: 8px; padding: 16px 20px; margin: 16px 0;
+  font-size: 13px; line-height: 1.6; overflow-x: auto;
+  font-family: "SF Mono", "Fira Code", "Consolas", monospace;
+  color: #1e293b;
+}
+.article-body table {
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 14px;
+}
+.article-body th, .article-body td {
+  padding: 10px 14px; border: 1px solid var(--border); text-align: left;
+}
+.article-body th { background: #f8fafc; font-weight: 600; }
+.article-body strong { font-weight: 600; }
+
+.article-back { margin-top: 32px; text-align: center; }
+.article-body .loading-spinner { text-align: center; padding: 48px; color: var(--text-muted); }
+
+@media (max-width: 768px) {
+  .article-body { padding: 20px 16px; }
+  .article-body h2 { font-size: 18px; }
+  .article-body h3 { font-size: 16px; }
+}

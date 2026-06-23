@@ -60,9 +60,9 @@ function initSearch() {
         let html = `<div class="search-hits">找到 ${data.total} 条结果</div>`;
         data.items.forEach(item => {
           const link = item.type === 'article'
-            ? `/${item.section === 'hospital' ? 'h' : 'e'}/${item.slug}.html`
+            ? `article.html?slug=${item.slug}&type=article`
             : item.type === 'case'
-              ? `/cases.html#${item.slug}`
+              ? `article.html?slug=${item.slug}&type=case`
               : `/news.html#news-${item.id}`;
           html += `<a href="${link}" class="search-item" onclick="closeSearch()">
             <span class="search-tag tag-${item.type}">${typeLabel(item.type)}</span>
@@ -126,6 +126,7 @@ function initPage() {
   else if (pageType === 'news') initNews();
   else if (pageType === 'hospital' || pageType === 'education') initArticles(pageType);
   else if (pageType === 'cases') initCases();
+  else if (pageType === 'article') initArticleDetail();
 }
 
 /* ===== 首页 ===== */
@@ -213,7 +214,7 @@ function initArticles(section) {
         return;
       }
       container.innerHTML = data.items.map(item => `
-        <a href="/${section === 'hospital' ? 'h' : 'e'}/${item.slug}.html" class="article-card">
+        <a href="article.html?slug=${item.slug}&type=article" class="article-card">
           <span class="article-cat">${item.category || '实务'}</span>
           <h3>${item.title}</h3>
           <p>${item.summary ? item.summary.slice(0, 80) + '...' : ''}</p>
@@ -239,18 +240,74 @@ function initCases() {
         return;
       }
       container.innerHTML = data.items.map(item => `
-        <div class="case-card" id="${item.slug}">
+        <a href="article.html?slug=${item.slug}&type=case" class="case-card" id="${item.slug}" style="display:block;text-decoration:none;color:inherit;">
           <h3>${item.title}</h3>
           <p>${item.summary || ''}</p>
           <div class="case-meta">
             <span>${item.category || '财务案例'}</span>
             <span>${formatDate(item.published_at)}</span>
           </div>
-        </div>
+        </a>
       `).join('');
     })
     .catch(() => {
       container.innerHTML = '<div class="empty-state">加载失败</div>';
+    });
+}
+
+/* ===== 文章/案例详情页 ===== */
+function initArticleDetail() {
+  const params = new URLSearchParams(window.location.search);
+  const slug = params.get('slug');
+  const type = params.get('type') || 'article';
+
+  if (!slug) {
+    document.getElementById('article-title').textContent = '页面不存在';
+    document.getElementById('article-content').innerHTML = '<p>请从文章列表选择内容</p>';
+    return;
+  }
+
+  const apiUrl = type === 'case' ? `${API_BASE}/cases/${slug}` : `${API_BASE}/articles/${slug}`;
+  const backUrl = type === 'case' ? 'cases.html' :
+    window.location.search.includes('section=hospital') ? 'hospital.html' : 'education.html';
+
+  fetch(apiUrl)
+    .then(r => {
+      if (!r.ok) throw new Error('Not found');
+      return r.json();
+    })
+    .then(item => {
+      document.title = `${item.title} — 医教财通`;
+      document.getElementById('article-title').textContent = item.title;
+
+      const meta = document.getElementById('article-meta');
+      let metaHtml = '';
+      if (type === 'case') {
+        metaHtml = `<span class="article-meta-tag">📋 实例讲解</span>`;
+      } else if (item.section === 'hospital') {
+        metaHtml = `<span class="article-meta-tag tag-hospital">🏥 医院专区</span>`;
+      } else {
+        metaHtml = `<span class="article-meta-tag tag-edu">🏫 院校专区</span>`;
+      }
+      if (item.category) metaHtml += `<span class="article-meta-tag">${item.category}</span>`;
+      if (item.author) metaHtml += `<span class="article-meta-author">${item.author}</span>`;
+      metaHtml += `<span class="article-meta-date">${formatDate(item.published_at)}</span>`;
+      meta.innerHTML = metaHtml;
+
+      // Render content (already HTML from API)
+      const contentDiv = document.getElementById('article-content');
+      if (type === 'case') {
+        contentDiv.innerHTML = `<article class="article-body">${item.content}</article>`;
+      } else {
+        contentDiv.innerHTML = `<article class="article-body">${item.content}</article>`;
+      }
+
+      // Add back link
+      contentDiv.innerHTML += `<div class="article-back"><a href="${backUrl}" class="btn btn-outline">← 返回${type === 'case' ? '案例列表' : '专区'}</a></div>`;
+    })
+    .catch(() => {
+      document.getElementById('article-title').textContent = '内容未找到';
+      document.getElementById('article-content').innerHTML = '<p>该内容不存在或已被移除</p>';
     });
 }
 
