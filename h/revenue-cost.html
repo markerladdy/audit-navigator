@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>医疗收入与费用核算实务 — 医教财通</title>
+  <meta name="description" content="公立医院门诊收入、住院收入的确认与核算方法，医疗业务成本、管理费用的归集与分摊实务。">
+  <link rel="stylesheet" href="../css/style.css">
+  <base href="../">
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="index.html" class="logo"><span class="icon">🏥</span><div>医教财通<span class="sub">Medical & Education Finance</span></div></a>
+    <button class="hamburger" aria-label="菜单"><span></span><span></span><span></span></button>
+    <div class="nav-links">
+      <a href="index.html">首页</a>
+      <a href="hospital.html" class="active">🏥 医院专区</a>
+      <a href="education.html">🏫 院校专区</a>
+      <a href="news.html">📰 每日资讯</a>
+      <a href="cases.html">📋 实例讲解</a>
+      <a href="tools.html">🔧 工具下载</a>
+      <a href="about.html">关于</a>
+    </div>
+  </nav>
+</header>
+
+<div class="page-header" style="padding:120px 24px 40px;">
+  <p style="color:rgba(255,255,255,0.6);font-size:14px;margin-bottom:8px;">🏥 医院专区 / 会计核算实务</p>
+  <h1>医疗收入与费用核算实务</h1>
+  <div class="tagline"><span class="tag-hospital">会计核算</span><span class="tag-hospital">成本管理</span></div>
+</div>
+
+<div class="content-page">
+  <p style="color:var(--text-light);font-size:14px;">本文基于公立医院会计实务通用规范编写，具体操作以单位实际情况为准。</p>
+
+  <h2>一、医疗收入核算</h2>
+  <p>医疗收入是医院开展医疗服务活动取得的收入，按来源分为门诊收入和住院收入两大类。</p>
+
+  <h3>1.1 门诊收入核算</h3>
+  <p>门诊收入主要包括挂号收入、诊察收入、检查收入、化验收入、治疗收入、手术收入、药品收入等。</p>
+  <p><strong>账务处理要点：</strong></p>
+  <ul>
+    <li>每日门诊收费结束后，HIS系统生成收入汇总日报</li>
+    <li>财务人员根据日报编制记账凭证</li>
+    <li>借：库存现金/银行存款（实际收款）<br>　　贷：医疗收入—门诊收入（各明细）</li>
+    <li>医保部分：借：应收医疗款—医保款<br>　　贷：医疗收入—门诊收入</li>
+  </ul>
+  <p><strong>用友HRP操作：</strong>通过HIS接口自动导入收入凭证，财务人员核对后审核入账。月末需与医保中心对账，确认医保结算差额。</p>
+
+  <h3>1.2 住院收入核算</h3>
+  <p>住院收入包括床位收入、诊察收入、检查收入、治疗收入、手术收入、护理收入、药品收入等。</p>
+  <ul>
+    <li>病人入院时收取预交金：借：库存现金<br>　　贷：预收医疗款</li>
+    <li>病人出院结算时：借：预收医疗款/应收医疗款<br>　　贷：医疗收入—住院收入（各明细）</li>
+    <li>月末在院病人未结算费用：借：在院病人医疗款<br>　　贷：医疗收入—住院收入（预留收入）</li>
+  </ul>
+
+  <h2>二、医疗业务成本核算</h2>
+
+  <h3>2.1 成本要素分类</h3>
+  <ul>
+    <li><strong>人员经费</strong>：工资、津贴补贴、绩效工资、社会保障缴费等</li>
+    <li><strong>卫生材料费</strong>：医用耗材、检验试剂、植入材料等</li>
+    <li><strong>药品费</strong>：西药、中成药、中草药</li>
+    <li><strong>固定资产折旧费</strong>：按类计提医疗设备折旧</li>
+    <li><strong>无形资产摊销费</strong></li>
+    <li><strong>其他费用</strong>：水电气、物业管理、维修等</li>
+  </ul>
+
+  <h3>2.2 成本归集与分摊</h3>
+  <p>医疗业务成本按科室归集，逐步向临床科室分摊：</p>
+  <ul>
+    <li><strong>临床服务类科室</strong>：直接归集人员经费、卫生材料费等直接成本</li>
+    <li><strong>医疗技术类科室</strong>：检验科、放射科等，向临床科室分摊</li>
+    <li><strong>医疗辅助类科室</strong>：供应室、收费处等，向临床和技术科室分摊</li>
+    <li><strong>行政后勤类</strong>：按人员比例或面积比例向全院分摊</li>
+  </ul>
+
+  <h3>2.3 管理费用核算</h3>
+  <p>管理费用指医院行政后勤部门为组织和管理医疗业务发生的费用。月末需将管理费用按一定标准分摊计入医疗业务成本。</p>
+
+  <h2>三、用友HRP收入与成本模块操作</h2>
+  <ul>
+    <li><strong>收入模块</strong>：配置HIS接口—设置收入科目映射—自动生成凭证—月末对账</li>
+    <li><strong>成本模块</strong>：设置成本中心—配置分摊参数—运行成本核算—生成成本报表</li>
+    <li><strong>月底结转</strong>：收入结转→成本结转→管理费用分摊→结余计算</li>
+  </ul>
+
+  <div style="margin-top:40px;padding:20px;background:#f0fdfa;border-radius:8px;border:1px solid #99f6e4;">
+    <p style="font-size:14px;color:#0f766e;">📌 <strong>参考说明</strong>：收入确认时点和成本分摊方法因医院管理需求而异，建议财务人员结合本单位实际情况执行。</p>
+  </div>
+
+  <div style="margin-top:32px;">
+    <a href="hospital.html#accounting" class="btn btn-hospital">← 返回医院专区</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand"><h3>🏥 医教财通</h3><p>专注医院与院校财务实务。</p></div>
+    <div class="footer-col"><h4>内容专区</h4><a href="hospital.html">医院专区</a><a href="education.html">院校专区</a><a href="cases.html">实例讲解</a></div>
+    <div class="footer-col"><h4>资源</h4><a href="news.html">每日资讯</a><a href="tools.html">工具下载</a><a href="about.html">关于我们</a></div>
+  </div>
+  <div class="footer-bottom">© 2026 医教财通</div>
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>

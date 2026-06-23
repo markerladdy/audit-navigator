@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>医院全成本核算实务 — 医教财通</title>
+  <meta name="description" content="公立医院全成本核算体系搭建，科室成本、项目成本、病种成本三级核算方法与用友HRP配置。">
+  <link rel="stylesheet" href="../css/style.css">
+  <base href="../">
+</head>
+<body>
+<header>/* same as other article pages */</header>
+<div class="page-header" style="padding:120px 24px 40px;">
+  <p style="color:rgba(255,255,255,0.6);font-size:14px;margin-bottom:8px;">🏥 医院专区 / 财务管理实务</p>
+  <h1>医院全成本核算实务</h1>
+  <div class="tagline"><span class="tag-hospital">成本核算</span><span class="tag-hospital">财务管理</span></div>
+</div>
+<div class="content-page">
+  <p style="color:var(--text-light);font-size:14px;">本文基于公立医院成本核算通用规范编写。</p>
+
+  <h2>一、成本核算体系概述</h2>
+  <p>公立医院全成本核算分为三个层级：科室成本核算、项目成本核算、病种成本核算。三级层层递进，逐步精细化。</p>
+
+  <h2>二、科室成本核算</h2>
+  <h3>2.1 科室分类</h3>
+  <ul>
+    <li><strong>临床服务类</strong>：内科、外科、妇产科、儿科等直接提供医疗服务的科室</li>
+    <li><strong>医疗技术类</strong>：检验科、放射科、超声科、药学部等</li>
+    <li><strong>医疗辅助类</strong>：供应室、挂号收费处、住院处等</li>
+    <li><strong>行政后勤类</strong>：院办、财务处、人事处、总务处等</li>
+  </ul>
+
+  <h3>2.2 成本归集</h3>
+  <p>各科室直接成本包括：</p>
+  <ul>
+    <li>人员经费：工资、绩效、社保等（按实际归属计入）</li>
+    <li>卫生材料费：根据领用记录计入</li>
+    <li>药品费：按实际消耗计入</li>
+    <li>固定资产折旧：按使用科室计入</li>
+    <li>无形资产摊销：按受益科室计入</li>
+    <li>其他费用：水电气、物业等按实际消耗或面积分摊</li>
+  </ul>
+
+  <h3>2.3 成本分摊</h3>
+  <p>四级科室逐级分摊：行政后勤类→医疗辅助类→医疗技术类→临床服务类</p>
+  <ul>
+    <li>行政后勤类分摊参数：人员数量、面积、业务量等</li>
+    <li>医疗辅助类分摊参数：工作量或收入比例</li>
+    <li>医疗技术类分摊参数：项目执行数量或收入比例</li>
+  </ul>
+
+  <h2>三、项目成本核算</h2>
+  <p>在科室成本的基础上，将临床科室的成本进一步分摊到具体的医疗服务项目中。</p>
+  <ul>
+    <li>确定医疗服务项目清单（挂号、诊察、检查、治疗、手术等）</li>
+    <li>采集项目执行量数据（HIS系统）</li>
+    <li>计算单位项目成本 = 科室总成本 / 项目执行总量</li>
+    <li>分析各项目盈亏情况</li>
+  </ul>
+
+  <h2>四、病种成本核算</h2>
+  <p>病种成本核算是将患者接受的所有医疗服务项目成本汇总，形成单病种成本。</p>
+
+  <h2>五、用友HRP成本模块配置</h2>
+  <ul>
+    <li><strong>成本中心设置</strong>：按科室架构建立成本中心树</li>
+    <li><strong>分摊参数配置</strong>：设置各层级分摊比例</li>
+    <li><strong>数据采集</strong>：从HIS、物资系统、固定资产系统自动采集</li>
+    <li><strong>成本计算</strong>：运行成本计算引擎，自动完成分摊</li>
+    <li><strong>报表输出</strong>：科室成本报表、项目成本报表、病种成本报表</li>
+  </ul>
+
+  <div style="margin-top:40px;padding:20px;background:#f0fdfa;border-radius:8px;border:1px solid #99f6e4;">
+    <p style="font-size:14px;color:#0f766e;">📌 成本分摊参数的选择对核算结果影响较大，建议财务人员结合医院管理需要合理设置。</p>
+  </div>
+  <div style="margin-top:32px;"><a href="hospital.html#finance" class="btn btn-hospital">← 返回医院专区</a></div>
+</div>
+<script src="js/main.js"></script>
+</body>
+</html>

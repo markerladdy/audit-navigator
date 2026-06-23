@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>医院会计科目设置与账套搭建 — 医教财通</title>
+  <meta name="description" content="公立医院会计科目体系设置、用友HRP账套初始化操作步骤详解。">
+  <link rel="stylesheet" href="../css/style.css">
+  <base href="../">
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="index.html" class="logo"><span class="icon">🏥</span><div>医教财通<span class="sub">Medical & Education Finance</span></div></a>
+    <button class="hamburger" aria-label="菜单"><span></span><span></span><span></span></button>
+    <div class="nav-links">
+      <a href="index.html">首页</a>
+      <a href="hospital.html" class="active">🏥 医院专区</a>
+      <a href="education.html">🏫 院校专区</a>
+      <a href="news.html">📰 每日资讯</a>
+      <a href="cases.html">📋 实例讲解</a>
+      <a href="tools.html">🔧 工具下载</a>
+      <a href="about.html">关于</a>
+    </div>
+  </nav>
+</header>
+
+<div class="page-header" style="padding:120px 24px 40px;">
+  <p style="color:rgba(255,255,255,0.6);font-size:14px;margin-bottom:8px;">🏥 医院专区 / 会计核算实务</p>
+  <h1>医院会计科目设置与账套搭建</h1>
+  <div class="tagline"><span class="tag-hospital">会计核算</span><span class="tag-hospital">用友HRP</span></div>
+</div>
+
+<div class="content-page">
+  <p style="color:var(--text-light);font-size:14px;">本文基于公立医院会计实务通用规范编写，具体操作以单位实际情况为准。</p>
+
+  <h2>一、医院会计科目体系概述</h2>
+  <p>公立医院会计科目按经济性质分为五大类：资产类、负债类、净资产类、收入类和费用类。与一般企业会计不同，医院会计需要针对医疗业务特点设置特色科目，如"医疗收入"、"医疗业务成本"、"财政补助收入"等。</p>
+
+  <h3>1.1 资产类科目</h3>
+  <p>资产类科目包括流动资产和非流动资产。重点关注：</p>
+  <ul>
+    <li><strong>应收医疗款</strong>：核算医保结算款、患者欠费等，需按医保类型设置辅助核算</li>
+    <li><strong>在院病人医疗款</strong>：核算住院病人未结算费用，月底需与住院部核对</li>
+    <li><strong>库存物资</strong>：药品、卫生材料、低值易耗品分科目核算</li>
+    <li><strong>固定资产</strong>：按类别设置医疗设备、房屋建筑、通用设备等明细科目</li>
+    <li><strong>在建工程</strong>：基建项目、大型修缮单独核算</li>
+  </ul>
+
+  <h3>1.2 负债类科目</h3>
+  <ul>
+    <li><strong>应付账款</strong>：药品款、设备款、工程款分别核算</li>
+    <li><strong>预收医疗款</strong>：住院预交金管理</li>
+    <li><strong>应付职工薪酬</strong>：与工资系统对接</li>
+  </ul>
+
+  <h3>1.3 收入类科目</h3>
+  <ul>
+    <li><strong>医疗收入</strong>：按门诊收入、住院收入设二级科目，按科室设辅助核算</li>
+    <li><strong>财政补助收入</strong>：区分基本支出补助和项目支出补助</li>
+    <li><strong>科教项目收入</strong>：科研课题经费、教学经费专项核算</li>
+  </ul>
+
+  <h3>1.4 费用类科目</h3>
+  <ul>
+    <li><strong>医疗业务成本</strong>：按科室归集，下设人员经费、卫生材料费、药品费等</li>
+    <li><strong>管理费用</strong>：行政后勤部门费用单独归集</li>
+    <li><strong>财政项目补助支出</strong>：与财政补助收入对应</li>
+  </ul>
+
+  <h2>二、用友HRP账套初始化操作</h2>
+
+  <h3>2.1 新建账套</h3>
+  <p>登录用友HRP系统，以系统管理员身份进入系统管理模块：</p>
+  <ul>
+    <li>选择"账套"→"建立"</li>
+    <li>输入账套编号、名称（建议以医院名称命名）</li>
+    <li>选择会计制度类型为"医院会计制度"</li>
+    <li>设置启用期间（通常为1月1日或7月1日）</li>
+  </ul>
+
+  <h3>2.2 科目体系导入</h3>
+  <p>用友HRP支持科目模板导入，也可手动新增：</p>
+  <ul>
+    <li>进入"基础设置"→"会计科目"</li>
+    <li>根据医院实际情况新增或修改科目</li>
+    <li>设置科目级次：一般设4级（一级4位+二级2位+三级2位+四级2位）</li>
+    <li>辅助核算设置：部门核算、项目核算、往来核算、个人核算</li>
+  </ul>
+
+  <h3>2.3 期初余额录入</h3>
+  <ul>
+    <li>收集截至建账日的各科目余额表</li>
+    <li>逐科目录入期初余额</li>
+    <li>进行试算平衡校验</li>
+    <li>固定资产卡片导入（与资产模块联动）</li>
+    <li>往来款项明细导入</li>
+  </ul>
+
+  <h3>2.4 常见问题</h3>
+  <ul>
+    <li><strong>科目级次设置不合理</strong>：建议预留足够的明细级次，避免后期频繁新增</li>
+    <li><strong>辅助核算与明细科目混用</strong>：同一维度要么用辅助核算，要么用明细科目，避免重复</li>
+    <li><strong>期初不平</strong>：重点检查往来款项、库存物资的汇总数是否与总账一致</li>
+  </ul>
+
+  <div style="margin-top:40px;padding:20px;background:#f0fdfa;border-radius:8px;border:1px solid #99f6e4;">
+    <p style="font-size:14px;color:#0f766e;">📌 <strong>参考说明</strong>：本文内容基于公立医院会计实务通用规范。各医院具体科目设置因规模、科室设置、管理需求不同而有所差异，建议结合本单位实际情况调整。</p>
+  </div>
+
+  <div style="margin-top:32px;">
+    <a href="hospital.html#accounting" class="btn btn-hospital">← 返回医院专区</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand"><h3>🏥 医教财通</h3><p>专注医院与院校财务实务。</p></div>
+    <div class="footer-col"><h4>内容专区</h4><a href="hospital.html">医院专区</a><a href="education.html">院校专区</a><a href="cases.html">实例讲解</a></div>
+    <div class="footer-col"><h4>资源</h4><a href="news.html">每日资讯</a><a href="tools.html">工具下载</a><a href="about.html">关于我们</a></div>
+  </div>
+  <div class="footer-bottom">© 2026 医教财通</div>
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>
