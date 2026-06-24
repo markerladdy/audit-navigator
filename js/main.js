@@ -151,7 +151,7 @@ function initHome() {
   // Load recent news on homepage
   const newsContainer = document.getElementById('home-news');
   if (!newsContainer) return;
-  fetch(`${API_BASE}/news?limit=4`)
+  fetch(`${API_BASE}/news?limit=3`)
     .then(r => r.json())
     .then(data => {
       if (!data.items || !data.items.length) return;

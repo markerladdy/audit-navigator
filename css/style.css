@@ -466,24 +466,38 @@ footer {
 .news-card h3 { font-size: 16px; margin-bottom: 6px; }
 .news-card p { font-size: 14px; color: var(--text-light); line-height: 1.6; }
 
-/* ===== 首页最新资讯 ===== */
+/* ===== 首页最新资讯（紧凑版） ===== */
+.news-teaser {
+  padding: 24px 0 8px;
+}
+.teaser-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 12px;
+}
+.teaser-header h2 {
+  font-size: 16px; font-weight: 600; color: var(--text);
+}
+.teaser-more {
+  font-size: 13px; color: var(--primary-light); text-decoration: none;
+}
+.teaser-more:hover { text-decoration: underline; }
 .home-news {
-  display: flex; flex-direction: column; gap: 10px; margin-top: 20px;
+  display: flex; flex-direction: column; gap: 6px;
 }
 .news-mini-card {
-  display: flex; align-items: center; gap: 12px;
-  padding: 14px 18px; background: white; border: 1px solid var(--border);
-  border-radius: var(--radius-sm); text-decoration: none; color: var(--text);
-  transition: box-shadow 0.2s;
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 14px; background: white; border: 1px solid var(--border);
+  border-radius: 6px; text-decoration: none; color: var(--text);
+  transition: box-shadow 0.15s;
 }
 .news-mini-card:hover { box-shadow: var(--shadow); }
 .news-meta {
-  font-size: 11px; padding: 2px 8px; border-radius: 4px;
+  font-size: 10px; padding: 1px 6px; border-radius: 3px;
   background: #f0fdfa; color: #0f766e; white-space: nowrap;
-  font-weight: 500; min-width: 48px; text-align: center;
+  font-weight: 500; min-width: 40px; text-align: center;
 }
-.news-title { flex: 1; font-size: 14px; }
-.news-date { font-size: 12px; color: var(--text-muted); white-space: nowrap; }
+.news-title { flex: 1; font-size: 13px; }
+.news-date { font-size: 11px; color: var(--text-muted); white-space: nowrap; }
 
 /* ===== 案例动态列表 ===== */
 .cases-list {
