@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://auditnavigator.de5.net/sitemap.xml
