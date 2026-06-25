@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <linearGradient id="favGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0c4a6e"/>
+      <stop offset="100%" style="stop-color:#0ea5e9"/>
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="6" fill="url(#favGrad)"/>
+  <!-- 十字 -->
+  <rect x="12" y="8" width="8" height="2.5" rx="1" fill="white"/>
+  <rect x="15" y="5" width="2" height="8.5" rx="1" fill="white"/>
+  <!-- 书卷 -->
+  <path d="M8 21 Q16 25 24 21" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <path d="M8 17 Q16 21 24 17" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <!-- AI -->
+  <text x="16" y="30" text-anchor="middle" font-family="sans-serif" font-size="6" font-weight="700" fill="#bae6fd">AI</text>
+</svg>
