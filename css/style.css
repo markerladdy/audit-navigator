@@ -58,11 +58,9 @@ nav {
 }
 
 .logo {
-  display: flex; align-items: center; gap: 6px;
+  display: flex; align-items: center;
 }
-.logo-img { height: 22px; width: auto; }
-.logo-text { font-size: 13px; font-weight: 700; color: var(--primary); line-height: 1.1; }
-.logo-text .sub { font-size: 8px; font-weight: 400; color: var(--text-muted); display: block; letter-spacing: 0.2px; }
+.logo-img { height: 20px; width: auto; display: block; }
 
 .nav-links { display: flex; gap: 24px; align-items: center; }
 .nav-links a {
