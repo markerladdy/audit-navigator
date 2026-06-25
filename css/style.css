@@ -58,11 +58,11 @@ nav {
 }
 
 .logo {
-  display: flex; align-items: center; gap: 10px;
+  display: flex; align-items: center; gap: 6px;
 }
-.logo-img { height: 36px; width: auto; }
-.logo-text { font-size: 18px; font-weight: 700; color: var(--primary); line-height: 1.2; }
-.logo-text .sub { font-size: 10px; font-weight: 400; color: var(--text-muted); display: block; letter-spacing: 0.5px; }
+.logo-img { height: 28px; width: auto; }
+.logo-text { font-size: 15px; font-weight: 700; color: var(--primary); line-height: 1.2; }
+.logo-text .sub { font-size: 9px; font-weight: 400; color: var(--text-muted); display: block; letter-spacing: 0.3px; }
 
 .nav-links { display: flex; gap: 24px; align-items: center; }
 .nav-links a {
