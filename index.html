@@ -5,18 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>医教财通 — 医院与院校AI+财务管理软件应用平台</title>
   <meta name="description" content="医教财通专注医院与院校AI+财务管理软件应用，深度解析用友GRP-U8 Cloud、用友HRP、金蝶云星空等产品在核算、预算、决算中的AI功能与实施案例。">
-  <meta name="keywords" content="医院会计核算,高校财务管理,中小学会计,用友软件,HRP,医院财务,教育财务">
+  <meta name="keywords" content="医院会计核算,高校财务管理,AI财务,用友GRP-U8,用友HRP,金蝶云星空">
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" type="image/svg+xml" href="favicon-32.png">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="医教财通">
   <meta property="og:url" content="https://auditnavigator.de5.net/">
   <meta property="og:title" content="医教财通 — 医院与院校AI+财务管理软件应用平台">
-  <meta property="og:description" content="医教财通专注医院与院校AI+财务管理软件应用，深度解析用友GRP-U8 Cloud、用友HRP、金蝶云星空等产品的AI功能与实施案例。">
+  <meta property="og:description" content="医教财通专注医院与院校AI+财务管理软件应用。">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://auditnavigator.de5.net/">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebSite","name":"医教财通","url":"https://auditnavigator.de5.net/","description":"医教财通专注医院与院校AI+财务管理软件应用，深度解析用友GRP-U8 Cloud、用友HRP、金蝶云星空等产品的AI功能与实施案例。"}
+  {"@context":"https://schema.org","@type":"WebSite","name":"医教财通","url":"https://auditnavigator.de5.net/"}
   </script>
 </head>
 <body data-page="home">
@@ -24,19 +24,20 @@
 <header>
   <nav>
     <a href="index.html" class="logo">
-      <img src="logo.png" alt="医教财通" class="logo-img">
+      <img src="logo.png" alt="" class="logo-img">
+      <span class="logo-text">医教财通</span>
     </a>
     <button class="hamburger" aria-label="菜单"><span></span><span></span><span></span></button>
     <div class="nav-links">
       <a href="index.html" class="active">首页</a>
-      <a href="hospital.html">🏥 医院专区</a>
-      <a href="education.html">🏫 院校专区</a>
-      <a href="news.html">📰 每日资讯</a>
-      <a href="cases.html">📋 实例讲解</a>
-      <a href="tools.html">🔧 工具下载</a>
+      <a href="hospital.html">医院专区</a>
+      <a href="education.html">院校专区</a>
+      <a href="news.html">资讯</a>
+      <a href="cases.html">案例</a>
+      <a href="tools.html">工具</a>
       <a href="about.html">关于</a>
     </div>
-    <button class="search-toggle" id="search-btn" aria-label="搜索">🔍</button>
+    <button class="search-toggle" id="search-btn" aria-label="搜索">&#x1F50D;</button>
   </nav>
 </header>
 
@@ -44,180 +45,140 @@
 <div class="search-overlay" id="search-overlay"></div>
 <div class="search-panel" id="search-panel">
   <div class="search-panel-header">
-    <input type="text" id="search-input" placeholder="搜索文章、资讯、案例… (Ctrl+K)" autocomplete="off">
-    <button onclick="closeSearch()" class="search-close">✕</button>
+    <input type="text" id="search-input" placeholder="搜索文章、资讯、案例…" autocomplete="off">
+    <button onclick="closeSearch()" class="search-close">&#x2715;</button>
   </div>
   <div class="search-results" id="search-results"></div>
 </div>
 
-<section class="hero">
-  <h1>医院 · 高校 · 中小学<br><span class="hl-blue">AI+财务管理软件</span>应用专业平台</h1>
-  <p>深度解析用友GRP-U8 Cloud·用友HRP·金蝶云星空等产品在会计核算、预算管理、决算编制中的AI功能与智能化应用，提供行业案例与实施指南</p>
-  <div class="hero-buttons">
-    <a href="hospital.html" class="btn btn-primary">🏥 医院AI财务专区</a>
-    <a href="education.html" class="btn btn-outline">🏫 院校AI财务专区</a>
-    <a href="news.html" class="btn btn-outline">📰 AI行业动态 →</a>
-  </div>
-</section>
+<!-- 主内容区：一屏仪表盘 -->
+<main class="dashboard">
+  <!-- 左上：医院专区 -->
+  <section class="dash-card dash-hospital">
+    <div class="dash-card-header">
+      <span class="dash-icon">&#x1F3E5;</span>
+      <h2>医院AI财务专区</h2>
+    </div>
+    <p class="dash-desc">用友HRP · 金蝶云星空 · 智能报销与审核 · 成本核算AI化</p>
+    <div class="dash-tags">
+      <a href="hospital.html#ai-reimburse" class="dash-tag">AI智能报销</a>
+      <a href="hospital.html#ai-audit" class="dash-tag">AI稽核</a>
+      <a href="hospital.html#cost" class="dash-tag">成本核算</a>
+      <a href="hospital.html#budget" class="dash-tag">预算监控</a>
+      <a href="hospital.html#research" class="dash-tag">科研经费</a>
+      <a href="hospital.html#yonGPT" class="dash-tag">YonGPT</a>
+    </div>
+    <a href="hospital.html" class="dash-enter">进入专区 &rarr;</a>
+  </section>
 
-<div class="stats-row">
-  <div class="stat-card">
-    <div class="stat-num blue">3+</div>
-    <div class="stat-label">财务管理软件<br><small>用友 · 金蝶 · 浪潮</small></div>
-  </div>
-  <div class="stat-card">
-    <div class="stat-num green">AI+</div>
-    <div class="stat-label">智能功能场景<br><small>报销 · 审核 · 预算 · 报告</small></div>
-  </div>
-  <div class="stat-card">
-    <div class="stat-num blue">10+</div>
-    <div class="stat-label">实施案例<br><small>医院 · 高校 · 区域</small></div>
-  </div>
-  <div class="stat-card">
-    <div class="stat-num green">持续</div>
-    <div class="stat-label">AI行业动态<br><small>大模型 · 产品更新</small></div>
-  </div>
-</div>
+  <!-- 中上：院校专区 -->
+  <section class="dash-card dash-edu">
+    <div class="dash-card-header">
+      <span class="dash-icon">&#x1F3EB;</span>
+      <h2>院校AI财务专区</h2>
+    </div>
+    <p class="dash-desc">用友GRP-U8 Cloud高校版 · 金蝶云星空 · 预算一体化 · 科研经费管理</p>
+    <div class="dash-tags">
+      <a href="education.html#budget" class="dash-tag">预算一体化</a>
+      <a href="education.html#fee" class="dash-tag">智能收费</a>
+      <a href="education.html#research" class="dash-tag">科研经费</a>
+      <a href="education.html#gpt" class="dash-tag">苍穹GPT</a>
+      <a href="education.html#decide" class="dash-tag">AI决算</a>
+      <a href="education.html#asset" class="dash-tag">资产管理</a>
+    </div>
+    <a href="education.html" class="dash-enter">进入专区 &rarr;</a>
+  </section>
 
-<div class="news-teaser">
-  <div class="section-container">
-    <div class="teaser-header">
-      <h2>📰 最新AI动态</h2>
-      <a href="news.html" class="teaser-more">更多 →</a>
+  <!-- 右上：最新动态 -->
+  <section class="dash-card dash-news">
+    <div class="dash-card-header">
+      <span class="dash-icon">&#x1F4F0;</span>
+      <h2>最新动态</h2>
+      <a href="news.html" class="dash-more">全部 &rarr;</a>
     </div>
     <div class="home-news" id="home-news"></div>
+  </section>
+
+  <!-- 左下：核心能力 -->
+  <section class="dash-card dash-features">
+    <div class="dash-card-header">
+      <span class="dash-icon">&#x1F916;</span>
+      <h2>AI核心能力</h2>
+    </div>
+    <div class="feature-grid">
+      <a href="hospital.html" class="feature-item">
+        <span class="feature-emoji">&#x1F9FE;</span>
+        <span class="feature-label">智能报销</span>
+      </a>
+      <a href="hospital.html" class="feature-item">
+        <span class="feature-emoji">&#x1F4CA;</span>
+        <span class="feature-label">预算管理</span>
+      </a>
+      <a href="hospital.html" class="feature-item">
+        <span class="feature-emoji">&#x1F50D;</span>
+        <span class="feature-label">AI稽核</span>
+      </a>
+      <a href="hospital.html" class="feature-item">
+        <span class="feature-emoji">&#x1F4B0;</span>
+        <span class="feature-label">成本核算</span>
+      </a>
+      <a href="hospital.html" class="feature-item">
+        <span class="feature-emoji">&#x1F4CB;</span>
+        <span class="feature-label">智能对账</span>
+      </a>
+      <a href="hospital.html" class="feature-item">
+        <span class="feature-emoji">&#x1F4E6;</span>
+        <span class="feature-label">报告生成</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- 中下：实施案例 -->
+  <section class="dash-card dash-cases">
+    <div class="dash-card-header">
+      <span class="dash-icon">&#x1F4CB;</span>
+      <h2>实施案例</h2>
+      <a href="cases.html" class="dash-more">全部 &rarr;</a>
+    </div>
+    <div class="cases-preview" id="cases-preview"></div>
+  </section>
+
+  <!-- 右下：产品体系 -->
+  <section class="dash-card dash-products">
+    <div class="dash-card-header">
+      <span class="dash-icon">&#x1F4BE;</span>
+      <h2>产品体系</h2>
+    </div>
+    <div class="product-list">
+      <a href="hospital.html" class="product-item">
+        <span class="product-name">用友HRP + YonGPT</span>
+        <span class="product-desc">医院财务云</span>
+      </a>
+      <a href="education.html" class="product-item">
+        <span class="product-name">用友GRP-U8 Cloud</span>
+        <span class="product-desc">高校预算一体化</span>
+      </a>
+      <a href="hospital.html" class="product-item">
+        <span class="product-name">金蝶云星空</span>
+        <span class="product-desc">智能财务平台</span>
+      </a>
+      <a href="education.html" class="product-item">
+        <span class="product-name">浪潮GS Cloud</span>
+        <span class="product-desc">AI预算预测</span>
+      </a>
+    </div>
+  </section>
+</main>
+
+<!-- 底部栏 -->
+<div class="bottom-bar">
+  <span>医教财通 &middot; 医院与院校AI+财务管理软件应用平台</span>
+  <div class="bottom-links">
+    <a href="about.html">关于我们</a>
+    <a href="tools.html">工具下载</a>
+    <a href="news.html">AI行业动态</a>
   </div>
 </div>
-
-<section class="section">
-  <div class="section-container">
-    <div class="section-header">
-      <h2>两大应用领域</h2>
-      <p>聚焦医院与院校财务管理软件的AI化转型</p>
-    </div>
-    <div class="sector-links">
-      <a href="hospital.html" class="sector-card hospital">
-        <div class="sector-icon">🏥</div>
-        <h3 style="color:var(--hospital)">医院AI财务专区</h3>
-        <p>用友HRP · 金蝶云星空 · AI智能报销与审核 · 成本核算AI化 · HIS财务对接</p>
-        <span class="btn btn-hospital">进入医院专区 →</span>
-      </a>
-      <a href="education.html" class="sector-card edu">
-        <div class="sector-icon">🏫</div>
-        <h3 style="color:var(--edu-green)">院校AI财务专区</h3>
-        <p>用友GRP-U8 Cloud高校版 · 金蝶云星空 · 预算一体化AI · 科研经费AI管理</p>
-        <span class="btn btn-edu">进入院校专区 →</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<section class="section section-alt">
-  <div class="section-container">
-    <div class="section-header">
-      <h2>核心内容板块</h2>
-    </div>
-    <div class="card-grid">
-      <div class="card card-hospital">
-        <div class="card-icon blue">🤖</div>
-        <h3>AI智能报销</h3>
-        <p>OCR票据识别、自动填单、规则审核、预算预警——用友YonGPT与金蝶苍穹GPT在智能报销场景中的功能对比与实施路径。</p>
-      </div>
-      <div class="card card-edu">
-        <div class="card-icon green">📊</div>
-        <h3>AI预算管理</h3>
-        <p>预算编制AI辅助、实时预算执行监控、多版本模拟预测、自动预警——用友GRP-U8 Cloud与金蝶云星空预算模块的智能化实践。</p>
-      </div>
-      <div class="card card-hospital">
-        <div class="card-icon blue">💻</div>
-        <h3>用友YonGPT大模型</h3>
-        <p>用友财务大模型YonGPT的自然语言查询、智能报表生成、异常交易检测能力，以及在医院和高校场景的落地案例。</p>
-      </div>
-      <div class="card card-edu">
-        <div class="card-icon green">📰</div>
-        <h3>AI+财务行业动态</h3>
-        <p>用友、金蝶、浪潮等厂商的AI财务产品更新，大模型在财务领域的最新进展，医院与院校财务数字化转型趋势。</p>
-      </div>
-      <div class="card card-hospital">
-        <div class="card-icon blue">📋</div>
-        <h3>AI实施案例</h3>
-        <p>大型高校使用用友GRP-U8 Cloud+AI稽核、三甲医院用友BIP财务云AI化的真实案例，展示效率提升和ROI数据。</p>
-      </div>
-      <div class="card card-edu">
-        <div class="card-icon green">🔧</div>
-        <h3>软件对比与选型</h3>
-        <p>用友vs金蝶vs浪潮等主流财务管理软件的AI功能对比，帮助医院和院校选型决策的参考指南。</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="section-container">
-    <div class="section-header">
-      <h2>AI+财务软件 — 三大产品体系</h2>
-      <p>用友YonGPT·用友GRP-U8 Cloud·金蝶云星空覆盖医院与院校全场景</p>
-    </div>
-    <div class="cols-2">
-      <div class="feature-block hospital">
-        <h3>🏥 医院 — 用友HRP + YonGPT</h3>
-        <ul>
-          <li>AI智能报销：OCR识别+自动填单+规则审核</li>
-          <li>智能对账：HIS收入数据自动匹配与差异分析</li>
-          <li>成本AI化：科室成本自动归集与分摊</li>
-          <li>预算AI执行监控：实时预报警+异常检测</li>
-          <li>科研经费AI核算：智能分类与结题报告</li>
-          <li>YonGPT大模型：自然语言查询财务数据</li>
-        </ul>
-      </div>
-      <div class="feature-block education">
-        <h3>🏫 院校 — 用友GRP-U8 Cloud + 金蝶云星空</h3>
-        <ul>
-          <li>GRP-U8 Cloud：预算一体化+AI辅助编制</li>
-          <li>智能收费管理：学费住宿费自动对账</li>
-          <li>科研经费AI管理：预算控制+智能记账</li>
-          <li>金蝶苍穹GPT：财务问答+自动报告生成</li>
-          <li>AI决算辅助：自动对账+报表生成</li>
-          <li>资产AI管理：折旧自动计提+盘点辅助</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="cta-section">
-  <h2>AI+财务 · 持续更新</h2>
-  <p>跟踪用友YonGPT、金蝶苍穹GPT等大模型在财务领域的最新进展，了解医院与院校财务数字化转型趋势</p>
-  <a href="news.html" class="btn btn-primary">📰 查看AI行业动态</a>
-</section>
-
-<footer>
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <h3>🏥 医教财通</h3>
-      <p>专注医院与院校AI+财务管理软件应用，深度解析用友GRP-U8 Cloud、用友HRP、金蝶云星空等产品的智能报销、AI预算、AI决算功能。</p>
-    </div>
-    <div class="footer-col">
-      <h4>AI应用专区</h4>
-      <a href="hospital.html">医院AI财务</a>
-      <a href="education.html">院校AI财务</a>
-      <a href="cases.html">AI实施案例</a>
-    </div>
-    <div class="footer-col">
-      <h4>资源</h4>
-      <a href="news.html">AI行业动态</a>
-      <a href="tools.html">工具下载</a>
-      <a href="about.html">关于我们</a>
-    </div>
-    <div class="footer-col">
-      <h4>联系方式</h4>
-      <a href="about.html">在线留言</a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    © 2026 医教财通 · AI+财务管理软件应用平台
-  </div>
-</footer>
 
 <script src="js/main.js"></script>
 </body>

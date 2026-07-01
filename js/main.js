@@ -1,4 +1,4 @@
-/* 医教财通 — main.js (全栈版) */
+/* 医教财通 — main.js (仪表盘版) */
 const API_BASE = '/api';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -13,10 +13,6 @@ function initNav() {
   const hamburger = document.querySelector('.hamburger');
   const navLinks = document.querySelector('.nav-links');
 
-  window.addEventListener('scroll', () => {
-    header.classList.toggle('scrolled', window.scrollY > 20);
-  });
-
   if (hamburger) {
     hamburger.addEventListener('click', () => {
       navLinks.classList.toggle('open');
@@ -29,9 +25,9 @@ function initNav() {
   }
 
   const cp = window.location.pathname;
-  document.querySelectorAll('.nav-links a, .sub-nav a').forEach(link => {
+  document.querySelectorAll('.nav-links a').forEach(link => {
     const href = link.getAttribute('href');
-    if (href && (cp === href || (href !== '/' && cp.startsWith(href)))) {
+    if (href && (cp === href || cp === '/' && href === 'index.html')) {
       link.classList.add('active');
     }
   });
@@ -54,21 +50,20 @@ function initSearch() {
         const resultsEl = document.getElementById('search-results');
         if (!resultsEl) return;
         if (!data.items || data.items.length === 0) {
-          resultsEl.innerHTML = `<div class="search-empty">未找到"${q}"相关内容</div>`;
+          resultsEl.innerHTML = '<div class="search-empty">未找到"' + q + '"相关内容</div>';
           return;
         }
-        let html = `<div class="search-hits">找到 ${data.total} 条结果</div>`;
+        let html = '<div class="search-hits">找到 ' + data.total + ' 条结果</div>';
         data.items.forEach(item => {
           const link = item.type === 'article'
-            ? `/article.html?slug=${item.slug}&type=article`
+            ? '/article.html?slug=' + item.slug + '&type=article'
             : item.type === 'case'
-              ? `/article.html?slug=${item.slug}&type=case`
-              : `/article.html?id=${item.id}&type=news`;
-          html += `<a href="${link}" class="search-item" onclick="closeSearch()">
-            <span class="search-tag tag-${item.type}">${typeLabel(item.type)}</span>
-            <span class="search-title">${item.title}</span>
-            <span class="search-summary">${item.summary ? item.summary.slice(0, 60) : ''}</span>
-          </a>`;
+              ? '/article.html?slug=' + item.slug + '&type=case'
+              : '/article.html?id=' + item.id + '&type=news';
+          html += '<a href="' + link + '" class="search-item" onclick="closeSearch()">' +
+            '<span class="search-tag tag-' + item.type + '">' + typeLabel(item.type) + '</span>' +
+            '<span class="search-title">' + item.title + '</span>' +
+            '</a>';
         });
         resultsEl.innerHTML = html;
       })
@@ -129,41 +124,52 @@ function initPage() {
   else if (pageType === 'article') initArticleDetail();
 }
 
-/* ===== 首页 ===== */
+/* ===== 首页仪表盘 ===== */
 function initHome() {
-  fetch(`${API_BASE}/stats`)
-    .then(r => r.json())
-    .then(stats => {
-      // Update stats row with real numbers
-      const labels = ['专注领域', '实务文章', '每日资讯', '实战案例'];
-      const values = ['3', stats.articles + '+', stats.news + '+', stats.cases + '+'];
-      const colors = ['blue', 'green', 'blue', 'green'];
-      const details = ['医院 · 高校 · 中小学', '持续更新中', '全网自动抓取', '真实财务场景'];
-      document.querySelectorAll('.stat-card').forEach((card, i) => {
-        if (i >= values.length) return;
-        card.querySelector('.stat-num').textContent = values[i];
-        card.querySelector('.stat-num').className = `stat-num ${colors[i]}`;
-        card.querySelector('small').textContent = details[i];
-      });
-    })
-    .catch(() => {});
-
-  // Load recent news on homepage
+  // 加载最新资讯（右上）
   const newsContainer = document.getElementById('home-news');
-  if (!newsContainer) return;
-  fetch(`${API_BASE}/news?limit=3`)
-    .then(r => r.json())
-    .then(data => {
-      if (!data.items || !data.items.length) return;
-      newsContainer.innerHTML = data.items.map(item => `
-        <a href="/article.html?id=${item.id}&type=news" class="news-mini-card">
-          <span class="news-meta">${item.category || '资讯'}</span>
-          <span class="news-title">${item.title}</span>
-          <span class="news-date">${formatDate(item.published_at)}</span>
-        </a>
-      `).join('');
-    })
-    .catch(() => {});
+  if (newsContainer) {
+    fetch(API_BASE + '/news?limit=4')
+      .then(r => r.json())
+      .then(data => {
+        if (!data.items || !data.items.length) {
+          newsContainer.innerHTML = '<div class="search-empty">暂无资讯</div>';
+          return;
+        }
+        newsContainer.innerHTML = data.items.map(item =>
+          '<a href="/article.html?id=' + item.id + '&type=news" class="news-mini-card">' +
+            '<span class="news-meta">' + (item.category || '动态') + '</span>' +
+            '<span class="news-title-text">' + item.title + '</span>' +
+            '<span class="news-date">' + formatDate(item.published_at) + '</span>' +
+          '</a>'
+        ).join('');
+      })
+      .catch(() => {
+        newsContainer.innerHTML = '<div class="search-empty">加载失败</div>';
+      });
+  }
+
+  // 加载案例预览（中下）
+  const casesContainer = document.getElementById('cases-preview');
+  if (casesContainer) {
+    fetch(API_BASE + '/cases?limit=3')
+      .then(r => r.json())
+      .then(data => {
+        if (!data.items || !data.items.length) {
+          casesContainer.innerHTML = '<div class="search-empty">暂无案例</div>';
+          return;
+        }
+        casesContainer.innerHTML = data.items.map(item =>
+          '<a href="/article.html?slug=' + item.slug + '&type=case" class="case-mini">' +
+            '<span class="case-mini-title">' + item.title + '</span>' +
+            '<span class="case-mini-meta">' + (item.category || '') + ' · ' + formatDate(item.published_at) + '</span>' +
+          '</a>'
+        ).join('');
+      })
+      .catch(() => {
+        casesContainer.innerHTML = '<div class="search-empty">加载失败</div>';
+      });
+  }
 }
 
 /* ===== 资讯页 ===== */
@@ -171,11 +177,10 @@ function initNews() {
   const container = document.getElementById('news-list');
   if (!container) return;
 
+  let url = API_BASE + '/news?limit=30';
   const params = new URLSearchParams(window.location.search);
-  const category = params.get('category') || '';
-
-  let url = `${API_BASE}/news?limit=30`;
-  if (category) url += `&category=${encodeURIComponent(category)}`;
+  const category = params.get('category');
+  if (category) url += '&category=' + encodeURIComponent(category);
 
   fetch(url)
     .then(r => r.json())
@@ -184,17 +189,17 @@ function initNews() {
         container.innerHTML = '<div class="empty-state">暂无资讯</div>';
         return;
       }
-      container.innerHTML = data.items.map(item => `
-        <a href="/article.html?id=${item.id}&type=news" class="news-card" id="news-${item.id}" style="display:block;text-decoration:none;color:inherit;">
-          <div class="news-card-header">
-            <span class="news-badge">${item.category || '资讯'}</span>
-            <span class="news-source">${item.source || ''}</span>
-            <span class="news-date">${formatDate(item.published_at)}</span>
-          </div>
-          <h3>${item.title}</h3>
-          <p>${item.summary || ''}</p>
-        </a>
-      `).join('');
+      container.innerHTML = data.items.map(item =>
+        '<a href="/article.html?id=' + item.id + '&type=news" class="news-card" style="display:block;text-decoration:none;color:inherit;">' +
+          '<div class="news-card-header">' +
+            '<span class="news-badge">' + (item.category || '资讯') + '</span>' +
+            '<span class="news-source">' + (item.source || '') + '</span>' +
+            '<span class="news-date">' + formatDate(item.published_at) + '</span>' +
+          '</div>' +
+          '<h3>' + item.title + '</h3>' +
+          '<p>' + (item.summary || '') + '</p>' +
+        '</a>'
+      ).join('');
     })
     .catch(() => {
       container.innerHTML = '<div class="empty-state">加载失败，请稍后重试</div>';
@@ -206,21 +211,21 @@ function initArticles(section) {
   const container = document.querySelector('.article-grid');
   if (!container) return;
 
-  fetch(`${API_BASE}/articles?section=${section}&limit=20`)
+  fetch(API_BASE + '/articles?section=' + section + '&limit=20')
     .then(r => r.json())
     .then(data => {
       if (!data.items || !data.items.length) {
         container.innerHTML = '<div class="empty-state">暂无文章</div>';
         return;
       }
-      container.innerHTML = data.items.map(item => `
-        <a href="/article.html?slug=${item.slug}&type=article" class="article-card">
-          <span class="article-cat">${item.category || '实务'}</span>
-          <h3>${item.title}</h3>
-          <p>${item.summary ? item.summary.slice(0, 80) + '...' : ''}</p>
-          <span class="article-date">${formatDate(item.published_at)}</span>
-        </a>
-      `).join('');
+      container.innerHTML = data.items.map(item =>
+        '<a href="/article.html?slug=' + item.slug + '&type=article" class="article-card">' +
+          '<span class="article-cat">' + (item.category || '实务') + '</span>' +
+          '<h3>' + item.title + '</h3>' +
+          '<p>' + (item.summary ? item.summary.slice(0, 80) + '...' : '') + '</p>' +
+          '<span class="article-date">' + formatDate(item.published_at) + '</span>' +
+        '</a>'
+      ).join('');
     })
     .catch(() => {
       container.innerHTML = '<div class="empty-state">加载失败</div>';
@@ -232,23 +237,23 @@ function initCases() {
   const container = document.querySelector('.cases-list');
   if (!container) return;
 
-  fetch(`${API_BASE}/cases?limit=20`)
+  fetch(API_BASE + '/cases?limit=20')
     .then(r => r.json())
     .then(data => {
       if (!data.items || !data.items.length) {
         container.innerHTML = '<div class="empty-state">暂无案例</div>';
         return;
       }
-      container.innerHTML = data.items.map(item => `
-        <a href="/article.html?slug=${item.slug}&type=case" class="case-card" id="${item.slug}" style="display:block;text-decoration:none;color:inherit;">
-          <h3>${item.title}</h3>
-          <p>${item.summary || ''}</p>
-          <div class="case-meta">
-            <span>${item.category || '财务案例'}</span>
-            <span>${formatDate(item.published_at)}</span>
-          </div>
-        </a>
-      `).join('');
+      container.innerHTML = data.items.map(item =>
+        '<a href="/article.html?slug=' + item.slug + '&type=case" class="case-card" style="display:block;text-decoration:none;color:inherit;">' +
+          '<h3>' + item.title + '</h3>' +
+          '<p>' + (item.summary || '') + '</p>' +
+          '<div class="case-meta">' +
+            '<span>' + (item.category || '案例') + '</span>' +
+            '<span>' + formatDate(item.published_at) + '</span>' +
+          '</div>' +
+        '</a>'
+      ).join('');
     })
     .catch(() => {
       container.innerHTML = '<div class="empty-state">加载失败</div>';
@@ -270,13 +275,13 @@ function initArticleDetail() {
 
   let apiUrl, backUrl;
   if (type === 'case') {
-    apiUrl = `${API_BASE}/cases/${slug}`;
+    apiUrl = API_BASE + '/cases/' + slug;
     backUrl = '/cases';
   } else if (type === 'news') {
-    apiUrl = `${API_BASE}/news/${id}`;
+    apiUrl = API_BASE + '/news/' + id;
     backUrl = '/news';
   } else {
-    apiUrl = `${API_BASE}/articles/${slug}`;
+    apiUrl = API_BASE + '/articles/' + slug;
     backUrl = '/education';
   }
 
@@ -286,34 +291,32 @@ function initArticleDetail() {
       return r.json();
     })
     .then(item => {
-      // Set back URL based on actual content
       if (type === 'article') {
         backUrl = item.section === 'hospital' ? '/hospital' : '/education';
       }
-      document.title = `${item.title} — 医教财通`;
+      document.title = item.title + ' — 医教财通';
       document.getElementById('article-title').textContent = item.title;
 
       const meta = document.getElementById('article-meta');
       let metaHtml = '';
       if (type === 'case') {
-        metaHtml = `<span class="article-meta-tag">📋 实例讲解</span>`;
+        metaHtml = '<span class="article-meta-tag">&#x1F4CB; 实例讲解</span>';
       } else if (type === 'news') {
-        metaHtml = `<span class="article-meta-tag tag-news-badge">📰 行业资讯</span>`;
-        if (item.source) metaHtml += `<span class="article-meta-tag">${item.source}</span>`;
+        metaHtml = '<span class="article-meta-tag tag-news-badge">&#x1F4F0; 行业资讯</span>';
+        if (item.source) metaHtml += '<span class="article-meta-tag">' + item.source + '</span>';
       } else if (item.section === 'hospital') {
-        metaHtml = `<span class="article-meta-tag tag-hospital">🏥 医院专区</span>`;
+        metaHtml = '<span class="article-meta-tag tag-hospital">&#x1F3E5; 医院专区</span>';
       } else {
-        metaHtml = `<span class="article-meta-tag tag-edu">🏫 院校专区</span>`;
+        metaHtml = '<span class="article-meta-tag tag-edu">&#x1F3EB; 院校专区</span>';
       }
-      if (item.category) metaHtml += `<span class="article-meta-tag">${item.category}</span>`;
-      if (item.author) metaHtml += `<span class="article-meta-author">${item.author}</span>`;
-      metaHtml += `<span class="article-meta-date">${formatDate(item.published_at)}</span>`;
+      if (item.category) metaHtml += '<span class="article-meta-tag">' + item.category + '</span>';
+      if (item.author) metaHtml += '<span class="article-meta-author">' + item.author + '</span>';
+      metaHtml += '<span class="article-meta-date">' + formatDate(item.published_at) + '</span>';
       meta.innerHTML = metaHtml;
 
       const contentDiv = document.getElementById('article-content');
-      contentDiv.innerHTML = `<article class="article-body">${item.content || item.summary || ''}</article>`;
-
-      contentDiv.innerHTML += `<div class="article-back"><a href="${backUrl}" class="btn btn-outline">← 返回列表</a></div>`;
+      contentDiv.innerHTML = '<article class="article-body">' + (item.content || item.summary || '') + '</article>';
+      contentDiv.innerHTML += '<div class="article-back"><a href="' + backUrl + '" class="btn btn-outline">&larr; 返回列表</a></div>';
     })
     .catch(() => {
       document.getElementById('article-title').textContent = '内容未找到';
@@ -325,5 +328,8 @@ function initArticleDetail() {
 function formatDate(dateStr) {
   if (!dateStr) return '';
   const d = new Date(dateStr);
-  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+  var y = d.getFullYear();
+  var m = String(d.getMonth() + 1).padStart(2, '0');
+  var day = String(d.getDate()).padStart(2, '0');
+  return y + '-' + m + '-' + day;
 }
