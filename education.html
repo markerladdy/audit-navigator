@@ -3,217 +3,138 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>院校AI财务 — 医教财通 | 用友GRP-U8 Cloud高校版</title>
-  <meta name="description" content="院校AI+财务管理软件应用：用友GRP-U8 Cloud高校版、金蝶云星空在高校预算管理、科研经费AI核算、智能报销中的功能解析与实施案例。">
-  <link rel="stylesheet" href="css/style.css">
+  <title>院校专区 — 医教财通</title>
+  <meta name="description" content="高校AI+财务管理软件应用：用友GRP-U8 Cloud高校版、金蝶云星空在预算一体化、智能报销中的应用。">
+  <link rel="stylesheet" href="css/style.css?v=4">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="favicon-32.png">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="医教财通">
   <meta property="og:url" content="https://auditnavigator.de5.net/education">
-  <meta property="og:title" content="院校AI财务 — 医教财通 | 用友GRP-U8 Cloud高校版">
-  <meta property="og:description" content="院校AI+财务管理软件应用：用友GRP-U8 Cloud高校版、金蝶云星空在高校预算管理、科研经费AI核算、智能报销中的功能解析与实施案例。">
+  <meta property="og:title" content="院校AI财务 — 医教财通">
+  <meta property="og:description" content="高校AI+财务管理软件应用：用友GRP-U8 Cloud高校版、金蝶云星空。">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://auditnavigator.de5.net/education">
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebSite","name":"医教财通","url":"https://auditnavigator.de5.net/education","description":"院校AI+财务管理软件应用：用友GRP-U8 Cloud高校版、金蝶云星空在高校预算管理、科研经费AI核算、智能报销中的功能解析与实施案例。"}
-  </script>
 </head>
 <body data-page="education">
 
 <header>
   <nav>
     <a href="index.html" class="logo">
-      <img src="logo.png" alt="医教财通" class="logo-img">
+      <img src="logo.png" alt="" class="logo-img">
+      <span class="logo-text">医教财通</span>
     </a>
     <button class="hamburger" aria-label="菜单"><span></span><span></span><span></span></button>
     <div class="nav-links">
       <a href="index.html">首页</a>
-      <a href="hospital.html">🏥 医院专区</a>
-      <a href="education.html" class="active">🏫 院校专区</a>
-      <a href="news.html">📰 每日资讯</a>
-      <a href="cases.html">📋 实例讲解</a>
-      <a href="tools.html">🔧 工具下载</a>
+      <a href="hospital.html">医院专区</a>
+      <a href="education.html" class="active">院校专区</a>
+      <a href="news.html">资讯</a>
+      <a href="cases.html">案例</a>
+      <a href="tools.html">工具</a>
       <a href="about.html">关于</a>
     </div>
-      <button class="search-toggle" id="search-btn" aria-label="搜索">🔍</button>
+    <button class="search-toggle" id="search-btn" aria-label="搜索">&#x1F50D;</button>
   </nav>
 </header>
 
-<!-- 搜索面板 -->
 <div class="search-overlay" id="search-overlay"></div>
 <div class="search-panel" id="search-panel">
   <div class="search-panel-header">
-    <input type="text" id="search-input" placeholder="搜索文章、资讯、案例… (Ctrl+K)" autocomplete="off">
-    <button onclick="closeSearch()" class="search-close">✕</button>
+    <input type="text" id="search-input" placeholder="搜索文章、资讯、案例…" autocomplete="off">
+    <button onclick="closeSearch()" class="search-close">&#x2715;</button>
   </div>
   <div class="search-results" id="search-results"></div>
 </div>
 
 <div class="page-header">
-  <h1>🏫 院校AI财务专区</h1>
-  <p>用友GRP-U8 Cloud高校版 · 金蝶云星空 · AI预算与核算</p>
-  <div class="tagline">
-    <span class="tag-edu">高校财务</span>
-    <span class="tag-edu">中小学会计</span>
-    <span class="tag-edu">用友教育版</span>
-  </div>
+  <h1>院校专区</h1>
+  <p>用友GRP-U8 Cloud高校版 · 金蝶云星空 · 预算一体化</p>
 </div>
 
-<nav class="sub-nav">
-  <div class="sub-nav-inner">
-    <a href="#university" class="edu-link">高校专区</a>
-    <a href="#school" class="edu-link">中小学专区</a>
-    <a href="#yonyou" class="edu-link">用友软件应用</a>
-    <a href="#topics" class="edu-link">热门专题</a>
-  </div>
-</nav>
+<div class="editorial">
+  <section class="section-block">
+    <div class="section-label">AI 能力</div>
+    <h2 class="section-heading">智能财务功能</h2>
+    <div class="feature-list">
+      <a href="#" class="feature-card">
+        <span class="feature-num">01</span>
+        <div class="feature-info">
+          <h3>AI辅助预算编制</h3>
+          <p>历史数据分析 · 自动生成预算草案 · 多版本模拟</p>
+        </div>
+      </a>
+      <a href="#" class="feature-card">
+        <span class="feature-num">02</span>
+        <div class="feature-info">
+          <h3>智能报销</h3>
+          <p>OCR识别 · 自动填单 · 规则审核 · 学费收入自动入账</p>
+        </div>
+      </a>
+      <a href="#" class="feature-card">
+        <span class="feature-num">03</span>
+        <div class="feature-info">
+          <h3>AI决算</h3>
+          <p>自动对账 · 报表生成 · 一键导出</p>
+        </div>
+      </a>
+      <a href="#" class="feature-card">
+        <span class="feature-num">04</span>
+        <div class="feature-info">
+          <h3>科研经费管理</h3>
+          <p>AI实时监控 · 使用预警 · 结题清算</p>
+        </div>
+      </a>
+    </div>
+  </section>
 
-<!-- ===== 高校 ===== -->
-<section class="section" id="university">
-  <div class="section-container">
-    <div class="section-header">
-      <h2>🎓 高校会计核算与财务管理</h2>
-      <p>高等学校会计核算实务、科研经费管理、预算绩效与成本核算</p>
+  <section class="section-block">
+    <div class="section-label">产品</div>
+    <h2 class="section-heading">院校常用产品</h2>
+    <div class="feature-list">
+      <a href="#" class="feature-card">
+        <span class="feature-num">01</span>
+        <div class="feature-info">
+          <h3>用友GRP-U8 Cloud高校版</h3>
+          <p>高校预算一体化管理平台，AI辅助编制与决算</p>
+        </div>
+      </a>
+      <a href="#" class="feature-card">
+        <span class="feature-num">02</span>
+        <div class="feature-info">
+          <h3>金蝶云星空</h3>
+          <p>智能财务平台，AI凭证自动生成，学费自动入账</p>
+        </div>
+      </a>
+      <a href="#" class="feature-card">
+        <span class="feature-num">03</span>
+        <div class="feature-info">
+          <h3>浪潮GS Cloud</h3>
+          <p>AI预算预测引擎，多情景模拟分析</p>
+        </div>
+      </a>
     </div>
-    <div class="article-grid"></div>
-  </div>
-</section>
+  </section>
 
-<!-- ===== 中小学 ===== -->
-<section class="section section-alt" id="school">
-  <div class="section-container">
-    <div class="section-header">
-      <h2>📚 中小学会计核算与财务管理</h2>
-      <p>中小学校会计制度实操、经费收支管理、食堂账务与资产管理</p>
-    </div>
-    <div class="card-grid">
-      <div class="card card-edu">
-        <div class="card-icon green">📘</div>
-        <h3>中小学会计核算</h3>
-        <p>中小学校会计科目设置、财政拨款收支核算、工资福利支出、商品和服务支出账务处理。</p>
-      </div>
-      <div class="card card-edu">
-        <div class="card-icon green">🍱</div>
-        <h3>食堂账务管理</h3>
-        <p>中小学校食堂独立核算要求、伙食费收支管理、食材采购与库存管理、食堂财务报表编制。</p>
-      </div>
-      <div class="card card-edu">
-        <div class="card-icon green">🏛️</div>
-        <h3>校舍与资产管理</h3>
-        <p>校舍维修改造资金管理、教学设备采购与入账、资产盘点与处置、校产管理信息化。</p>
-      </div>
-      <div class="card card-edu">
-        <div class="card-icon green">📋</div>
-        <h3>预算与经费管理</h3>
-        <p>公用经费预算编制、专项经费申报与执行、义务教育经费保障机制、课后服务费管理。</p>
-      </div>
-      <div class="card card-edu">
-        <div class="card-icon green">🛡️</div>
-        <h3>内部控制规范</h3>
-        <p>中小学校内控体系建设要点、预算收支流程规范、采购与合同管理、财务公开制度。</p>
-      </div>
-      <div class="card card-edu">
-        <div class="card-icon green">📊</div>
-        <h3>财务报表编制</h3>
-        <p>中小学校资产负债表、收入费用表、预算执行情况表的编制方法与审核要点。</p>
-      </div>
-    </div>
-  </div>
-</section>
+  <section class="section-block">
+    <div class="section-label">案例</div>
+    <h2 class="section-heading">相关案例</h2>
+    <div class="cases-grid" id="education-cases"></div>
+  </section>
+</div>
 
-<!-- ===== 用友软件 ===== -->
-<section class="section" id="yonyou">
-  <div class="section-container">
-    <div class="section-header">
-      <h2>💻 用友软件在院校的应用</h2>
-      <p>用友政务版/教育版在高校和中小学财务管理的深度实践</p>
-    </div>
-    <div class="cols-2">
-      <div class="feature-block education">
-        <h3>🎓 高校用友应用场景</h3>
-        <ul>
-          <li>用友财务系统与高校科目体系配置</li>
-          <li>科研经费专项核算模块设置</li>
-          <li>教育成本核算系统搭建</li>
-          <li>预算编制与执行控制模块</li>
-          <li>收费系统与财务系统接口</li>
-          <li>固定资产管理与财务联动</li>
-          <li>薪资管理与个税计算</li>
-          <li>网上报销与审批流程</li>
-          <li><a href="edu/yonyou-training.html" style="color:var(--edu-green);font-weight:600;">📖 深度解读：用友设计制造一体化解决方案（62页精华浓缩）→</a></li>
-        </ul>
-      </div>
-      <div class="feature-block education">
-        <h3>📚 中小学用友应用场景</h3>
-        <ul>
-          <li>用友财务系统中小学校账套设置</li>
-          <li>财政直接支付/授权支付对接</li>
-          <li>食堂财务独立核算模块</li>
-          <li>公用经费支出管理</li>
-          <li>资产管理系统初始化</li>
-          <li>工资统发系统对接</li>
-          <li>教育经费统计报表</li>
-          <li>学校财务信息公开模块</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section section-alt" id="topics">
-  <div class="section-container">
-    <div class="section-header">
-      <h2>🔥 热门专题</h2>
-    </div>
-    <div class="card-grid">
-      <div class="card card-edu">
-        <h3>高校科研经费管理实务</h3>
-        <p>科研放管服背景下的经费管理变革，从预算编制到结题审计的全流程操作指南。</p>
-      </div>
-      <div class="card card-edu">
-        <h3>中小学食堂财务规范化</h3>
-        <p>中小学校食堂独立核算操作实务，食材采购、成本核算到公开公示完整流程。</p>
-      </div>
-      <div class="card card-edu">
-        <h3>教育行业绩效评价</h3>
-        <p>高校和中小学预算绩效管理体系构建，绩效指标设置与评价结果应用。</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="cta-section">
-  <h2>获取院校财务专业工具</h2>
-  <p>免费下载高校与中小学专用财务分析模板、预算管理工具和用友操作手册</p>
-  <a href="tools.html" class="btn btn-primary">🔧 进入工具下载</a>
-</section>
-
-<footer>
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <h3>🏥 医教财通</h3>
-      <p>专注医院与院校财务实务，深耕会计核算、财务管理与用友软件应用。</p>
-    </div>
-    <div class="footer-col">
-      <h4>内容专区</h4>
-      <a href="hospital.html">医院专区</a>
-      <a href="education.html">院校专区</a>
-      <a href="cases.html">实例讲解</a>
-    </div>
-    <div class="footer-col">
-      <h4>资源</h4>
-      <a href="news.html">每日资讯</a>
-      <a href="tools.html">工具下载</a>
+<footer class="editorial-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">医教财通</div>
+    <div class="footer-links">
       <a href="about.html">关于我们</a>
-    </div>
-    <div class="footer-col">
-      <h4>联系方式</h4>
-      <a href="about.html">在线留言</a>
+      <a href="tools.html">工具下载</a>
+      <a href="news.html">AI行业动态</a>
     </div>
   </div>
-  <div class="footer-bottom">
-    © 2026 医教财通 · Medical & Education Finance Navigator
-  </div>
+  <div class="footer-copy">© 2026 医教财通 · AI+财务管理软件应用平台</div>
 </footer>
 
 <script src="js/main.js"></script>

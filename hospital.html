@@ -3,213 +3,138 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>医院AI财务 — 医教财通 | 用友HRP + YonGPT</title>
+  <title>医院专区 — 医教财通</title>
   <meta name="description" content="医院AI+财务管理软件应用：用友HRP+YonGPT、金蝶云星空在智能报销、AI成本核算、预算执行监控中的功能解析与实施案例。">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=4">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="favicon-32.png">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="医教财通">
   <meta property="og:url" content="https://auditnavigator.de5.net/hospital">
-  <meta property="og:title" content="医院AI财务 — 医教财通 | 用友HRP + YonGPT">
-  <meta property="og:description" content="医院AI+财务管理软件应用：用友HRP+YonGPT、金蝶云星空在智能报销、AI成本核算、预算执行监控中的功能解析与实施案例。">
+  <meta property="og:title" content="医院AI财务 — 医教财通">
+  <meta property="og:description" content="医院AI+财务管理软件应用：用友HRP+YonGPT、金蝶云星空。">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://auditnavigator.de5.net/hospital">
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebSite","name":"医教财通","url":"https://auditnavigator.de5.net/hospital","description":"医院AI+财务管理软件应用：用友HRP+YonGPT、金蝶云星空在智能报销、AI成本核算、预算执行监控中的功能解析与实施案例。"}
-  </script>
 </head>
 <body data-page="hospital">
 
 <header>
   <nav>
     <a href="index.html" class="logo">
-      <img src="logo.png" alt="医教财通" class="logo-img">
+      <img src="logo.png" alt="" class="logo-img">
+      <span class="logo-text">医教财通</span>
     </a>
     <button class="hamburger" aria-label="菜单"><span></span><span></span><span></span></button>
     <div class="nav-links">
       <a href="index.html">首页</a>
-      <a href="hospital.html" class="active">🏥 医院专区</a>
-      <a href="education.html">🏫 院校专区</a>
-      <a href="news.html">📰 每日资讯</a>
-      <a href="cases.html">📋 实例讲解</a>
-      <a href="tools.html">🔧 工具下载</a>
+      <a href="hospital.html" class="active">医院专区</a>
+      <a href="education.html">院校专区</a>
+      <a href="news.html">资讯</a>
+      <a href="cases.html">案例</a>
+      <a href="tools.html">工具</a>
       <a href="about.html">关于</a>
     </div>
-      <button class="search-toggle" id="search-btn" aria-label="搜索">🔍</button>
+    <button class="search-toggle" id="search-btn" aria-label="搜索">&#x1F50D;</button>
   </nav>
 </header>
 
-<!-- 搜索面板 -->
 <div class="search-overlay" id="search-overlay"></div>
 <div class="search-panel" id="search-panel">
   <div class="search-panel-header">
-    <input type="text" id="search-input" placeholder="搜索文章、资讯、案例… (Ctrl+K)" autocomplete="off">
-    <button onclick="closeSearch()" class="search-close">✕</button>
+    <input type="text" id="search-input" placeholder="搜索文章、资讯、案例…" autocomplete="off">
+    <button onclick="closeSearch()" class="search-close">&#x2715;</button>
   </div>
   <div class="search-results" id="search-results"></div>
 </div>
 
 <div class="page-header">
-  <h1>🏥 医院AI财务专区</h1>
-  <p>用友HRP · YonGPT大模型 · 金蝶云星空 · AI智能报销</p>
-  <div class="tagline">
-    <span class="tag-hospital">会计核算</span>
-    <span class="tag-hospital">财务管理</span>
-    <span class="tag-hospital">用友HRP</span>
-  </div>
+  <h1>医院专区</h1>
+  <p>用友HRP · YonGPT大模型 · 金蝶云星空</p>
 </div>
 
-<nav class="sub-nav">
-  <div class="sub-nav-inner">
-    <a href="#accounting" class="hospital-link">会计核算实务</a>
-    <a href="#finance" class="hospital-link">财务管理实务</a>
-    <a href="#yonyou" class="hospital-link">用友软件应用</a>
-    <a href="#topics" class="hospital-link">热门专题</a>
-  </div>
-</nav>
+<div class="editorial">
+  <section class="section-block">
+    <div class="section-label">AI 能力</div>
+    <h2 class="section-heading">智能财务功能</h2>
+    <div class="feature-list">
+      <a href="#" class="feature-card">
+        <span class="feature-num">01</span>
+        <div class="feature-info">
+          <h3>智能报销</h3>
+          <p>OCR票据识别 · 自动填单 · 规则审核 · 预算预警</p>
+        </div>
+      </a>
+      <a href="#" class="feature-card">
+        <span class="feature-num">02</span>
+        <div class="feature-info">
+          <h3>AI成本核算</h3>
+          <p>自动归集 · 智能分摊 · 病种成本分析 · DRG核算</p>
+        </div>
+      </a>
+      <a href="#" class="feature-card">
+        <span class="feature-num">03</span>
+        <div class="feature-info">
+          <h3>预算执行监控</h3>
+          <p>实时预警 · 多维对比 · 执行率分析</p>
+        </div>
+      </a>
+      <a href="#" class="feature-card">
+        <span class="feature-num">04</span>
+        <div class="feature-info">
+          <h3>AI稽核</h3>
+          <p>异常检测 · 智能筛选 · 风险预警</p>
+        </div>
+      </a>
+    </div>
+  </section>
 
-<section class="section" id="accounting">
-  <div class="section-container">
-    <div class="section-header">
-      <h2>📊 会计核算实务</h2>
-      <p>公立医院会计制度实操指南，从科目设置到报表编制全流程</p>
+  <section class="section-block">
+    <div class="section-label">产品</div>
+    <h2 class="section-heading">医院常用产品</h2>
+    <div class="feature-list">
+      <a href="#" class="feature-card">
+        <span class="feature-num">01</span>
+        <div class="feature-info">
+          <h3>用友HRP + YonGPT</h3>
+          <p>医院资源规划系统，YonGPT大模型赋能智能问答与财务分析</p>
+        </div>
+      </a>
+      <a href="#" class="feature-card">
+        <span class="feature-num">02</span>
+        <div class="feature-info">
+          <h3>金蝶云星空</h3>
+          <p>智能财务平台，AI凭证自动生成，HIS收入自动入账</p>
+        </div>
+      </a>
+      <a href="#" class="feature-card">
+        <span class="feature-num">03</span>
+        <div class="feature-info">
+          <h3>远光医疗行业AI大模型</h3>
+          <p>智能成本分摊 · DRG盈亏分析 · 科研经费管理</p>
+        </div>
+      </a>
     </div>
-    <div class="article-grid"></div>
-  </div>
-</section>
+  </section>
 
-<section class="section section-alt" id="finance">
-  <div class="section-container">
-    <div class="section-header">
-      <h2>📋 财务管理实务</h2>
-      <p>公立医院预算管理、成本控制、内控建设与绩效评价全场景</p>
-    </div>
-    <div class="card-grid">
-      <div class="card card-hospital">
-        <div class="card-icon blue">📊</div>
-        <h3>全面预算管理</h3>
-        <p>医院收入预算编制、支出预算控制、预算执行分析，用友预算模块的配置与实操。</p>
-      </div>
-      <div class="card card-hospital" onclick="location.href='h/cost-accounting.html'" style="cursor:pointer;">
-        <div class="card-icon blue">📈</div>
-        <h3><a href="h/cost-accounting.html" style="color:inherit;text-decoration:none;">全成本核算</a></h3>
-        <p>科室成本、项目成本、病种成本三级核算体系搭建，成本数据采集与分析应用。</p>
-      </div>
-      <div class="card card-hospital">
-        <div class="card-icon blue">🛡️</div>
-        <h3>内部控制建设</h3>
-        <p>医院层面内控体系设计，收支、采购、资产、合同等业务层面内控流程优化。</p>
-      </div>
-      <div class="card card-hospital">
-        <div class="card-icon blue">⭐</div>
-        <h3>绩效评价管理</h3>
-        <p>医院绩效考核指标体系构建，科室绩效分配方案设计，用友HRP绩效模块应用。</p>
-      </div>
-      <div class="card card-hospital">
-        <div class="card-icon blue">🏷️</div>
-        <h3>招标采购管理</h3>
-        <p>医疗设备、药品、耗材的招标采购流程，采购计划编制与执行监控。</p>
-      </div>
-      <div class="card card-hospital">
-        <div class="card-icon blue">📋</div>
-        <h3>财务报表分析</h3>
-        <p>医院财务分析指标体系，运营效率分析、偿债能力分析、发展能力分析实务。</p>
-      </div>
-    </div>
-  </div>
-</section>
+  <section class="section-block">
+    <div class="section-label">案例</div>
+    <h2 class="section-heading">相关案例</h2>
+    <div class="cases-grid" id="hospital-cases"></div>
+  </section>
+</div>
 
-<section class="section" id="yonyou">
-  <div class="section-container">
-    <div class="section-header">
-      <h2>💻 用友软件在医院的应用</h2>
-      <p>用友HRP及HIS-财务集成方案在公立医院的深度实践</p>
-    </div>
-    <div class="cols-2">
-      <div class="feature-block hospital">
-        <h3>⚙️ 用友HRP核心模块</h3>
-        <ul>
-          <li>总账模块与医院会计科目体系对接</li>
-          <li>应收应付管理与HIS接口设置</li>
-          <li>固定资产全生命周期管理</li>
-          <li>薪酬核算与人力成本管理</li>
-          <li>成本核算模块参数配置</li>
-          <li>预算编制、执行与考核</li>
-          <li>报表中心自定义报表设置</li>
-          <li>财务数据分析驾驶舱</li>
-        </ul>
-      </div>
-      <div class="feature-block hospital">
-        <h3>🔗 HIS与财务系统集成</h3>
-        <ul>
-          <li>HIS收入数据自动导入财务系统</li>
-          <li>药品/耗材库房与财务库存联动</li>
-          <li>门诊收费与财务收入对账</li>
-          <li>住院结算数据实时传输</li>
-          <li>医保结算数据对账与核算</li>
-          <li>电子票据与财务系统对接</li>
-          <li>接口异常排查与数据一致性校验</li>
-          <li>多院区统一财务平台建设</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section section-alt" id="topics">
-  <div class="section-container">
-    <div class="section-header">
-      <h2>🔥 热门专题</h2>
-    </div>
-    <div class="card-grid">
-      <div class="card card-hospital">
-        <h3>医院成本核算落地实操</h3>
-        <p>从科室成本到病种成本的分步实施指南，数据采集、分摊规则、系统配置全方位讲解。</p>
-      </div>
-      <div class="card card-hospital">
-        <h3>用友HRP上线经验分享</h3>
-        <p>多家公立医院HRP项目实施案例，常见问题与避坑指南。</p>
-      </div>
-      <div class="card card-hospital">
-        <h3>公立医院内部控制评价</h3>
-        <p>按照最新规范要求的医院内控自评方法与改进路径。</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="cta-section">
-  <h2>获取医院财务专业工具</h2>
-  <p>免费下载医院专用财务分析模板、成本核算工具和用友HRP操作手册</p>
-  <a href="tools.html" class="btn btn-primary">🔧 进入工具下载</a>
-</section>
-
-<footer>
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <h3>🏥 医教财通</h3>
-      <p>专注医院与院校财务实务，深耕会计核算、财务管理与用友软件应用。</p>
-    </div>
-    <div class="footer-col">
-      <h4>内容专区</h4>
-      <a href="hospital.html">医院专区</a>
-      <a href="education.html">院校专区</a>
-      <a href="cases.html">实例讲解</a>
-    </div>
-    <div class="footer-col">
-      <h4>资源</h4>
-      <a href="news.html">每日资讯</a>
-      <a href="tools.html">工具下载</a>
+<footer class="editorial-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">医教财通</div>
+    <div class="footer-links">
       <a href="about.html">关于我们</a>
-    </div>
-    <div class="footer-col">
-      <h4>联系方式</h4>
-      <a href="about.html">在线留言</a>
+      <a href="tools.html">工具下载</a>
+      <a href="news.html">AI行业动态</a>
     </div>
   </div>
-  <div class="footer-bottom">
-    © 2026 医教财通 · Medical & Education Finance Navigator
-  </div>
+  <div class="footer-copy">© 2026 医教财通 · AI+财务管理软件应用平台</div>
 </footer>
 
 <script src="js/main.js"></script>

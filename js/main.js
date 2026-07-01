@@ -1,4 +1,4 @@
-/* 医教财通 — main.js (仪表盘版) */
+/* 医教财通 — main.js (Editorial版) */
 const API_BASE = '/api';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -7,23 +7,17 @@ document.addEventListener('DOMContentLoaded', () => {
   initPage();
 });
 
-/* ===== 导航 ===== */
 function initNav() {
-  const header = document.querySelector('header');
   const hamburger = document.querySelector('.hamburger');
   const navLinks = document.querySelector('.nav-links');
-
   if (hamburger) {
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
-    });
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
   }
   if (navLinks) {
     navLinks.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => navLinks.classList.remove('open'));
     });
   }
-
   const cp = window.location.pathname;
   document.querySelectorAll('.nav-links a').forEach(link => {
     const href = link.getAttribute('href');
@@ -33,18 +27,16 @@ function initNav() {
   });
 }
 
-/* ===== 搜索 ===== */
 function initSearch() {
   const searchInput = document.getElementById('search-input');
   const searchBtn = document.getElementById('search-btn');
   const searchPanel = document.getElementById('search-panel');
   const searchOverlay = document.getElementById('search-overlay');
-
   if (!searchInput) return;
 
   function doSearch(q) {
     if (!q || q.length < 2) return;
-    fetch(`${API_BASE}/search?q=${encodeURIComponent(q)}`)
+    fetch(API_BASE + '/search?q=' + encodeURIComponent(q))
       .then(r => r.json())
       .then(data => {
         const resultsEl = document.getElementById('search-results');
@@ -92,21 +84,16 @@ function initSearch() {
     if ((e.ctrlKey || e.metaKey) && e.key === 'k') { e.preventDefault(); openSearch(); }
   });
 
-  let searchTimer;
+  let timer;
   searchInput.addEventListener('input', () => {
-    clearTimeout(searchTimer);
+    clearTimeout(timer);
     const val = searchInput.value.trim();
-    if (val.length < 2) {
-      document.getElementById('search-results').innerHTML = '';
-      return;
-    }
-    searchTimer = setTimeout(() => doSearch(val), 300);
+    if (val.length < 2) { document.getElementById('search-results').innerHTML = ''; return; }
+    timer = setTimeout(() => doSearch(val), 300);
   });
-
   searchInput.addEventListener('keydown', e => {
     if (e.key === 'Enter') doSearch(searchInput.value.trim());
   });
-
   window.closeSearch = closeSearch;
 }
 
@@ -114,7 +101,6 @@ function typeLabel(type) {
   return { article: '文章', news: '资讯', case: '案例' }[type] || type;
 }
 
-/* ===== 页面分发 ===== */
 function initPage() {
   const pageType = document.body.dataset.page;
   if (pageType === 'home') initHome();
@@ -124,12 +110,11 @@ function initPage() {
   else if (pageType === 'article') initArticleDetail();
 }
 
-/* ===== 首页仪表盘 ===== */
 function initHome() {
-  // 加载最新资讯（右上）
+  // 加载资讯
   const newsContainer = document.getElementById('home-news');
   if (newsContainer) {
-    fetch(API_BASE + '/news?limit=4')
+    fetch(API_BASE + '/news?limit=5')
       .then(r => r.json())
       .then(data => {
         if (!data.items || !data.items.length) {
@@ -138,21 +123,19 @@ function initHome() {
         }
         newsContainer.innerHTML = data.items.map(item =>
           '<a href="/article.html?id=' + item.id + '&type=news" class="news-mini-card">' +
-            '<span class="news-meta">' + (item.category || '动态') + '</span>' +
+            '<span class="news-meta">' + (item.category || '资讯') + '</span>' +
             '<span class="news-title-text">' + item.title + '</span>' +
             '<span class="news-date">' + formatDate(item.published_at) + '</span>' +
           '</a>'
         ).join('');
       })
-      .catch(() => {
-        newsContainer.innerHTML = '<div class="search-empty">加载失败</div>';
-      });
+      .catch(() => { newsContainer.innerHTML = '<div class="search-empty">加载失败</div>'; });
   }
 
-  // 加载案例预览（中下）
+  // 加载案例
   const casesContainer = document.getElementById('cases-preview');
   if (casesContainer) {
-    fetch(API_BASE + '/cases?limit=3')
+    fetch(API_BASE + '/cases?limit=4')
       .then(r => r.json())
       .then(data => {
         if (!data.items || !data.items.length) {
@@ -166,22 +149,17 @@ function initHome() {
           '</a>'
         ).join('');
       })
-      .catch(() => {
-        casesContainer.innerHTML = '<div class="search-empty">加载失败</div>';
-      });
+      .catch(() => { casesContainer.innerHTML = '<div class="search-empty">加载失败</div>'; });
   }
 }
 
-/* ===== 资讯页 ===== */
 function initNews() {
   const container = document.getElementById('news-list');
   if (!container) return;
-
   let url = API_BASE + '/news?limit=30';
   const params = new URLSearchParams(window.location.search);
   const category = params.get('category');
   if (category) url += '&category=' + encodeURIComponent(category);
-
   fetch(url)
     .then(r => r.json())
     .then(data => {
@@ -190,7 +168,7 @@ function initNews() {
         return;
       }
       container.innerHTML = data.items.map(item =>
-        '<a href="/article.html?id=' + item.id + '&type=news" class="news-card" style="display:block;text-decoration:none;color:inherit;">' +
+        '<a href="/article.html?id=' + item.id + '&type=news" class="news-card">' +
           '<div class="news-card-header">' +
             '<span class="news-badge">' + (item.category || '资讯') + '</span>' +
             '<span class="news-source">' + (item.source || '') + '</span>' +
@@ -201,16 +179,12 @@ function initNews() {
         '</a>'
       ).join('');
     })
-    .catch(() => {
-      container.innerHTML = '<div class="empty-state">加载失败，请稍后重试</div>';
-    });
+    .catch(() => { container.innerHTML = '<div class="empty-state">加载失败</div>'; });
 }
 
-/* ===== 文章列表页（医院/院校） ===== */
 function initArticles(section) {
   const container = document.querySelector('.article-grid');
   if (!container) return;
-
   fetch(API_BASE + '/articles?section=' + section + '&limit=20')
     .then(r => r.json())
     .then(data => {
@@ -227,16 +201,12 @@ function initArticles(section) {
         '</a>'
       ).join('');
     })
-    .catch(() => {
-      container.innerHTML = '<div class="empty-state">加载失败</div>';
-    });
+    .catch(() => { container.innerHTML = '<div class="empty-state">加载失败</div>'; });
 }
 
-/* ===== 案例页 ===== */
 function initCases() {
   const container = document.querySelector('.cases-list');
   if (!container) return;
-
   fetch(API_BASE + '/cases?limit=20')
     .then(r => r.json())
     .then(data => {
@@ -245,7 +215,7 @@ function initCases() {
         return;
       }
       container.innerHTML = data.items.map(item =>
-        '<a href="/article.html?slug=' + item.slug + '&type=case" class="case-card" style="display:block;text-decoration:none;color:inherit;">' +
+        '<a href="/article.html?slug=' + item.slug + '&type=case" class="case-card">' +
           '<h3>' + item.title + '</h3>' +
           '<p>' + (item.summary || '') + '</p>' +
           '<div class="case-meta">' +
@@ -255,24 +225,19 @@ function initCases() {
         '</a>'
       ).join('');
     })
-    .catch(() => {
-      container.innerHTML = '<div class="empty-state">加载失败</div>';
-    });
+    .catch(() => { container.innerHTML = '<div class="empty-state">加载失败</div>'; });
 }
 
-/* ===== 文章/案例详情页 ===== */
 function initArticleDetail() {
   const params = new URLSearchParams(window.location.search);
   const slug = params.get('slug');
   const id = params.get('id');
   const type = params.get('type') || 'article';
-
   if (!slug && !id) {
     document.getElementById('article-title').textContent = '页面不存在';
     document.getElementById('article-content').innerHTML = '<p>请从列表选择内容</p>';
     return;
   }
-
   let apiUrl, backUrl;
   if (type === 'case') {
     apiUrl = API_BASE + '/cases/' + slug;
@@ -284,19 +249,12 @@ function initArticleDetail() {
     apiUrl = API_BASE + '/articles/' + slug;
     backUrl = '/education';
   }
-
   fetch(apiUrl)
-    .then(r => {
-      if (!r.ok) throw new Error('Not found');
-      return r.json();
-    })
+    .then(r => { if (!r.ok) throw new Error('Not found'); return r.json(); })
     .then(item => {
-      if (type === 'article') {
-        backUrl = item.section === 'hospital' ? '/hospital' : '/education';
-      }
+      if (type === 'article') backUrl = item.section === 'hospital' ? '/hospital' : '/education';
       document.title = item.title + ' — 医教财通';
       document.getElementById('article-title').textContent = item.title;
-
       const meta = document.getElementById('article-meta');
       let metaHtml = '';
       if (type === 'case') {
@@ -313,10 +271,7 @@ function initArticleDetail() {
       if (item.author) metaHtml += '<span class="article-meta-author">' + item.author + '</span>';
       metaHtml += '<span class="article-meta-date">' + formatDate(item.published_at) + '</span>';
       meta.innerHTML = metaHtml;
-
-      const contentDiv = document.getElementById('article-content');
-      contentDiv.innerHTML = '<article class="article-body">' + (item.content || item.summary || '') + '</article>';
-      contentDiv.innerHTML += '<div class="article-back"><a href="' + backUrl + '" class="btn btn-outline">&larr; 返回列表</a></div>';
+      document.getElementById('article-content').innerHTML = '<article class="article-body">' + (item.content || item.summary || '') + '</article>';
     })
     .catch(() => {
       document.getElementById('article-title').textContent = '内容未找到';
@@ -324,7 +279,6 @@ function initArticleDetail() {
     });
 }
 
-/* ===== 工具 ===== */
 function formatDate(dateStr) {
   if (!dateStr) return '';
   const d = new Date(dateStr);
